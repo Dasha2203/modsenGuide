@@ -1,8 +1,29 @@
+@font-face {
+  font-family: "Mont";
+  src: local("Mont-Regular"),
+   url("./fonts/Mont/Mont-Regular.woff") format("woff");
+  font-weight: 400;
+ }
+@font-face {
+  font-family: "Mont";
+  src: local("Mont-SemiBold"),
+   url("./fonts/Mont/Mont-SemiBold.woff") format("woff");
+  font-weight: 600;
+ }
+@font-face {
+  font-family: "Mont";
+  src: local("Mont-Bold"),
+   url("./fonts/Mont/Mont-Bold.woff") format("woff");
+  font-weight: 700;
+ }
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: "Mont";
+  font-weight: 600;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
