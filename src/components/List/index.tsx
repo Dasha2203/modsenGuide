@@ -1,54 +1,33 @@
-import { Avatar, Checkbox, ListItem, ListItemAvatar, ListItemButton, ListItemText } from '@mui/material'
-import { useState } from 'react'
+import React from 'react'
+import { ListItem } from '@mui/material'
 
 import { StyledList } from './style'
+import { StyledListButton } from './ListItem/style'
 
-const List = () => {
-  const [checked, setChecked] = useState([1]);
+type ListProps<A> = {
+  onChange: (value: A) => void
+  checked: A[]
+  itemAs: (option: A) => React.ReactNode
+  items: A[]
+}
 
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+const List = <A extends unknown>({ items, itemAs, checked, onChange }: ListProps<A>) => {
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  }
-  
   return (
     <StyledList dense>
-    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => {
-      const labelId = `checkbox-list-secondary-label-${value}`;
-      return (
-        <ListItem
-          key={value}
-          secondaryAction={
-            <Checkbox
-              edge="end"
-              onChange={handleToggle(value)}
-              checked={checked.indexOf(value) !== -1}
-              inputProps={{ 'aria-labelledby': labelId }}
-            />
-          }
-          disablePadding
-        >
-          <ListItemButton>
-            <ListItemAvatar>
-              <Avatar
-                alt={`Avatar n°${value + 1}`}
-                src={`/static/images/avatar/${value + 1}.jpg`}
-              />
-            </ListItemAvatar>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-          </ListItemButton>
-        </ListItem>
-      );
-    })}
-  </StyledList>
+      {items.map((item, i) => {
+        return (
+          <ListItem
+            key={i}
+            sx={{ padding: 0 }}
+          >
+            <StyledListButton onClick={() => onChange(item)} active={checked.indexOf(item) === -1}>
+              {itemAs(item)}
+            </StyledListButton>
+          </ListItem>
+        )
+      })}
+    </StyledList>
   )
 }
 

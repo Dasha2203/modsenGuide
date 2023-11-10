@@ -1,11 +1,12 @@
+import { Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from '@emotion/react'
+
+import Login from './pages/Auth/Login'
+import Register from './pages/Auth/Register'
+import Main from './pages/Main'
+import NotFound from './pages/NotFound'
+import theme from './theme'
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Auth/Login';
-import Register from './pages/Auth/Register';
-import Main from './pages/Main';
-import NotFound from './pages/NotFound';
-import { ThemeProvider } from '@emotion/react';
-import theme from './theme';
 
 const App = () => {
   return (
