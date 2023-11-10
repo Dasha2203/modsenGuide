@@ -113,7 +113,7 @@ export const Login = () => {
           />
           <Button
             variant="contained"
-            size="large"
+            size="medium"
             fullWidth
             type="submit"
             sx={{

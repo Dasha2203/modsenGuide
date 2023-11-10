@@ -1,33 +1,28 @@
-import { OutlinedTextFieldProps, TextField } from '@mui/material'
 import { forwardRef } from 'react'
+import { OutlinedTextFieldProps } from '@mui/material'
 
-const Input = forwardRef<HTMLInputElement, OutlinedTextFieldProps>(({ label, onChange, value, error, helperText, size, variant }, forwardRef) => (
-  <TextField
+import { StyledInput } from './style'
+
+const Input = forwardRef<HTMLInputElement, OutlinedTextFieldProps>(({
+  label,
+  onChange,
+  value,
+  error,
+  helperText,
+  size,
+  variant
+}, forwardRef) => (
+  <StyledInput
     ref={forwardRef}
     label={label}
     onChange={onChange}
     value={value}
     fullWidth={true}
     size={size}
-    variant={variant}
     margin="normal"
+    variant={variant}
     error={error}
     helperText={helperText}
-    sx={{
-      '& .MuiInputBase-root': {
-        borderRadius: '10px'
-      },
-      '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-          borderColor: '#C4C4C4',
-          borderWidth: 3
-        },
-        '&.Mui-focused fieldset': {
-          borderWidth: 3
-        }
-      },
-
-    }}
   />
 ))
 

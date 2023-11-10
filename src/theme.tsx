@@ -17,9 +17,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 5,
-          fontWeight: 700
+          fontWeight: 700,
+          padding: '10px'
         },
-      }
+        sizeLarge: {
+          padding: '19px'
+        }
+      },
     }
   }
 })

@@ -156,7 +156,7 @@ export const Register = () => {
             />
             <Button
               variant="contained"
-              size="large"
+              size="medium"
               fullWidth
               type="submit"
               sx={{

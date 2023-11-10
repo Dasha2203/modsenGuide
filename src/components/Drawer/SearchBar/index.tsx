@@ -1,46 +1,44 @@
-import { Autocomplete, Button, Typography } from '@mui/material'
+import { useState } from 'react'
+import { Button } from '@mui/material'
 
 import Input from 'components/Input'
-import { SearchIcon, WrapSearchBar } from './style'
-import List from 'components/List'
 import Label from 'components/Label'
+import PlacesList from 'components/PlacesList'
+import AutoComplete from 'components/AutoComplete'
+import {SearchIcon, WrapSearchBar } from './style'
+import { PlaceItem, places } from 'data/places'
 
 const SearchBar = () => {
+  const [chackedPlaces, setChackedPlaces] = useState<PlaceItem[]>([])
+
+  function handleChange(item: PlaceItem) {
+    const currentIndex = chackedPlaces.indexOf(item)
+    const newChecked = [...chackedPlaces]
+
+    if (currentIndex === -1) {
+      newChecked.push(item);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChackedPlaces(newChecked);
+  }
 
   return (
     <WrapSearchBar>
-      <Autocomplete
-        freeSolo
-        onChange={(event, value) => console.log(value)}
-        id="free-solo-2-demo"
-        disableClearable
-        options={[]}
-
-        renderInput={(params) => (
-          <Input
-            variant="outlined"
-            {...params}
-            value={'value'}
-            label="Место"
-            InputProps={{
-              ...params.InputProps,
-              type: 'search',
-            }}
-            onChange={() => { }}
-          />
-        )}
-      />
+      <AutoComplete/>
       <Label>Искать:</Label>
-      <List />
+      <PlacesList onChange={handleChange} items={places} chacked={chackedPlaces} />
       <Label>В радиусе:</Label>
-      <Input variant="outlined" value={23} onChange={() => {}}/>
+      <Input variant="outlined" value={23} onChange={() => { }} />
 
       <Button
         variant="contained"
         fullWidth
         type="submit"
         sx={{
-          mt: '25px'
+          mt: 'auto',
+          mb: '36px'
         }}
 
       >
