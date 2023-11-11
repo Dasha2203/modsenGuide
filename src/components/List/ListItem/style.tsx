@@ -5,7 +5,7 @@ type ButtonProps = {
   active: boolean
 }
 
-export const StyledListButton = styled(ListItemButton)((props: ButtonProps) => ({
+export const StyledListButton = styled(ListItemButton)(() => ({
   padding: '10px 20px',
-  opacity: props.active ? '1' : '0.5'
+  // opacity: props.active ? '1' : '0.5'
 }))

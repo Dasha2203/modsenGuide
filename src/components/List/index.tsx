@@ -21,8 +21,9 @@ const List = <A extends unknown>({ items, itemAs, checked, onChange }: ListProps
             key={i}
             sx={{ padding: 0 }}
           >
-            <StyledListButton onClick={() => onChange(item)} active={checked.indexOf(item) === -1}>
+            <StyledListButton onClick={() => onChange(item)}>
               {itemAs(item)}
+              {/* {itemAs(checked)} */}
             </StyledListButton>
           </ListItem>
         )

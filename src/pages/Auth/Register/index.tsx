@@ -9,7 +9,7 @@ import Input from 'components/Input'
 import Link from 'components/Link';
 import { db } from './../../../firebase'
 import { useAppDispatch } from 'hooks/redux-hooks';
-import { setUser } from 'store/slices/userSlice';
+import { setUser } from 'store/slices/user/userSlice';
 
 type RegisterForm = {
   name: string

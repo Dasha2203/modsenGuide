@@ -10,6 +10,7 @@ export const WrapSearchBar = styled(Box)`
   padding: 25px 25px 0;
   display: flex;
   flex-direction: column;
+  width: '100%';
   flex-grow: 1;
   border-left-width: 3px;
   border-left-color: #C4C4C4;
