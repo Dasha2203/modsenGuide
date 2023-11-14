@@ -7,13 +7,16 @@ import LoginIcon from 'icons/LoginIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import SearchIcon from 'icons/SearchIcon'
 import { AvatarButton, Button, ButtonGroup, Logo, WrapNavbar } from './style'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const { email } = useAuth()
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget)
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -23,10 +26,10 @@ const Navbar = () => {
     <WrapNavbar>
       <Logo />
       <ButtonGroup>
-        <Button>
+        <Button onClick={() => navigate('/')}>
           <SearchIcon fill="#5E7BC7" />
         </Button>
-        <Button>
+        <Button onClick={() => navigate('/favorites')}>
           <FavoriteIcon />
         </Button>
       </ButtonGroup>

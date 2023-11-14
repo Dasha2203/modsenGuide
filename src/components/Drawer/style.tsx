@@ -1,7 +1,7 @@
 import MuiDrawer from '@mui/material/Drawer'
 import { styled, Theme, CSSObject } from '@mui/material/styles'
 
-const drawerWidth = 510
+const drawerWidth = 600
 
 export const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -26,7 +26,7 @@ export const closedMixin = (theme: Theme): CSSObject => ({
 
 export const StyledDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    width: drawerWidth,
+    maxWidth: drawerWidth,
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',

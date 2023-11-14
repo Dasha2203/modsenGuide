@@ -5,14 +5,14 @@ import Navbar from './Navbar';
 import SearchBar from './SearchBar'
 import { StyledDrawer } from './style';
 
-export const Drawer = () => {
+export const Drawer = ({ isLoaded }: { isLoaded: boolean }) => {
   const [open, setOpen] = useState(false)
 
   return (
     <StyledDrawer variant="permanent" open={true}>
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'stretch', height: '100%' }}>
-        <Navbar/>
-        <SearchBar/>
+        <Navbar />
+        {isLoaded && <SearchBar />}
       </Box>
     </StyledDrawer>
   )

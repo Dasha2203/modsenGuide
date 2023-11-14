@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Input from 'components/Input'
 import Link from 'components/Link'
-import { setUser } from "store/slices/userSlice"
+import { setUser } from "store/slices/user/userSlice"
 
 type LoginForm = {
   email: string
@@ -37,9 +37,13 @@ export const Login = () => {
       dispatch(setUser({
         email: user.email,
         id: user.uid,
-        token: user.refreshToken
+        token: user.getIdToken()
+
       }))
 
+      const token = await user.getIdToken()
+      localStorage.setItem('token', token)
+      
       navigate('/')
     } catch (err) {
       console.log(err)

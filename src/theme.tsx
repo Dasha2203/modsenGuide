@@ -6,7 +6,7 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#5E7BC7'
+      main: '#5E7BC7',
     },
     secondary: {
       main: '#C75E5E'
@@ -18,10 +18,17 @@ const theme = createTheme({
         root: {
           borderRadius: 5,
           fontWeight: 700,
-          padding: '10px'
+          padding: '10px',
+          boxShadow: 'none'
         },
         sizeLarge: {
           padding: '19px'
+        },
+        outlined: {
+          borderWidth: '3px',
+          '&:hover': {
+            borderWidth: '3px'
+          }
         }
       },
     }

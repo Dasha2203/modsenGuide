@@ -1,24 +1,24 @@
 import List from 'components/List'
-import { PlaceItem } from 'data/places'
 import PlaceListItem from './PlaceListItem'
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
+import { checkTypePlaces } from 'store/slices/places/placesSlice'
 
-type PlacesListProps = {
-  onChange: (value: PlaceItem) => void
-  items: PlaceItem[],
-  chacked: PlaceItem[]
-}
-
-const PlacesList = ({ items, chacked, onChange }: PlacesListProps) => {
+const PlacesList = () => {
+  const { checkedTypesPlaces, typesPlaces } = useAppSelector(state => state.placesReducer)
+  const dispatch = useAppDispatch()
 
   return (
-    <>
-      <List
-        onChange={onChange}
-        items={items}
-        itemAs={(item) => <PlaceListItem item={item} />}
-        checked={chacked}
-      />
-    </>
+    <List
+      onChange={(item) => dispatch(checkTypePlaces(item))}
+      items={typesPlaces}
+      itemAs={(item) => (
+        <PlaceListItem
+          item={item}
+          isActive={checkedTypesPlaces.findIndex(i => i.id === item.id) !== -1}
+        />
+      )}
+      checked={checkedTypesPlaces}
+    />
   )
 }
 
