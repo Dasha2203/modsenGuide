@@ -1,6 +1,6 @@
 import { AppDispatch } from 'store'
-import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess } from './placesSlice'
-import { TDetailPlaceResult, TLocation, TMap, TPlacesResult } from 'types'
+import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
+import { LatLngLiteral, TDetailPlaceResult, TLocation, TMap, TPlacesResult } from 'types'
 
 type TFetchPlacesProps = {
   location: TLocation,
@@ -13,7 +13,7 @@ export const fetchPlaces = ({
   location,
   types,
   radius,
-  map 
+  map
 }: TFetchPlacesProps) => async (dispatch: AppDispatch) => {
   try {
     dispatch(placesFetching())
@@ -71,20 +71,45 @@ export const fetchPlace = ({ map, placeId }: TFetchPlaceProps) => async (dispatc
 
     const service = new google.maps.places.PlacesService(map);
 
-    service.getDetails(request, (place: TDetailPlaceResult | null, status) => {
+    service.getDetails(request, (place: google.maps.places.PlaceResult | null, status) => {
       if (
         status === google.maps.places.PlacesServiceStatus.OK &&
         place &&
         place.geometry &&
         place.geometry.location
       ) {
-
         console.log('детально ', place)
-        dispatch(fetchDetailPageSuccess(place))
+        dispatch(fetchDetailPageSuccess({
+          ...place,
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng()
+        }
+        ))
       }
     });
 
-  } catch(e) {
+  } catch (e) {
     dispatch(placesFetchingError('Ошибка загрузки place'))
+  }
+}
+
+export const fetchDirection = (origin: LatLngLiteral, destination: LatLngLiteral) => async (dispatch: AppDispatch) => {
+  try {
+    const service = new google.maps.DirectionsService()
+
+    service.route({
+      origin,
+      destination: { lat: 53.78409860843558, lng: 27.628201620446013 },
+      travelMode: google.maps.TravelMode.DRIVING
+    },
+      (result, status) => {
+        if (status === "OK" && result) {
+          dispatch(setDirection(result))
+        }
+      }
+    )
+
+  } catch (e) {
+    console.log('Ошибка построения маршрута')
   }
 }

@@ -2,7 +2,7 @@ import { db } from '../../../firebase'
 import { addDoc, collection, getDocs, query, where, writeBatch } from 'firebase/firestore'
 import { AppDispatch } from 'store';
 import { TFavoritePlace } from 'types';
-import { pushFavoritesPlaces, setFavoritesPlaces } from './userSlice';
+import { pushFavoritesPlace, setFavoritesPlaces, removeFavoritesPlace } from './userSlice';
 
 const favoritesCollection = 'favoretesPlaces'
 
@@ -20,12 +20,13 @@ export const getFavoritesPlaces = ({ id }: { id: string }) => async (dispatch: A
   }
 }
 
-export const addFavoritesPlaces = (place: TFavoritePlace) => async (dispatch: AppDispatch) => {
+export const addFavoritesPlace = (place: TFavoritePlace) => async (dispatch: AppDispatch) => {
   try {
     await addDoc(collection(db, favoritesCollection), place)
 
-    dispatch(pushFavoritesPlaces(place))
+    dispatch(pushFavoritesPlace(place))
   } catch (err) {
+    console.log('dasha')
     console.log(err)
   }
 }
@@ -33,15 +34,16 @@ export const addFavoritesPlaces = (place: TFavoritePlace) => async (dispatch: Ap
 export const removeFavoritesPlaces = ({placeId}: { placeId: string }) => async (dispatch: AppDispatch) => {
   try {
     const usersRef = collection(db, favoritesCollection)
-    const placesQuery = query(usersRef, where("placeId", "==", placeId));
+    const placesQuery = query(usersRef, where("placeId", "==", placeId))
     const placesDocs = await getDocs(placesQuery)
-    const batch = writeBatch(db);
+    const batch = writeBatch(db)
   
     placesDocs.forEach(doc => {
-      batch.delete(doc.ref);
+      batch.delete(doc.ref)
     });
   
-    await batch.commit();
+    await batch.commit()
+    dispatch(removeFavoritesPlace(placeId))
 
   } catch (err) {
     console.log(err)

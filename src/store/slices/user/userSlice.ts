@@ -36,8 +36,11 @@ const userSlice = createSlice({
     setFavoritesPlaces(state, action: PayloadAction<TFavoritePlace[]>) {
       state.favoritePlaces = action.payload
     },
-    pushFavoritesPlaces(state, action: PayloadAction<TFavoritePlace>) {
+    pushFavoritesPlace(state, action: PayloadAction<TFavoritePlace>) {
       state.favoritePlaces.push(action.payload)
+    },
+    removeFavoritesPlace(state, action: PayloadAction<string>) {
+      state.favoritePlaces = state.favoritePlaces.filter(place => place.placeId !== action.payload)
     },
     setUserLocation(state, action: PayloadAction<{lat: number, lng: number}>) {
       state.userLocation = action.payload
@@ -50,7 +53,8 @@ export const {
   removeUser,
   setUserLocation,
   setFavoritesPlaces,
-  pushFavoritesPlaces
+  pushFavoritesPlace,
+  removeFavoritesPlace
 } = userSlice.actions
 
 export default userSlice.reducer

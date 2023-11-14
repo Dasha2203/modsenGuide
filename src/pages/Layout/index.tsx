@@ -17,7 +17,7 @@ export const Layout = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyAnFQhA1orm7HGeZLhawF54VPNTU3vwi4E",
+    googleMapsApiKey: "AIzaSyBlS8RLUN-7rC0v-09mUrmPA7taL4tpVvs",
     libraries: ["places"],
   })
 

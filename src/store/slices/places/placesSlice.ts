@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { placesTypes, PlaceTypeItem } from 'data/places'
-import { TDetailPlaceResult, TMap } from 'types'
+import { DirectionsResult, TDetailPlaceResult, TMap } from 'types'
 
 interface IPlaceState {
   places:  google.maps.places.PlaceResult[],
@@ -10,6 +10,7 @@ interface IPlaceState {
   map: google.maps.Map | null
   isLoading: boolean
   error: string
+  direction: DirectionsResult | null
 }
 
 const initialState: IPlaceState = {
@@ -17,6 +18,7 @@ const initialState: IPlaceState = {
   placeDetail: null,
   typesPlaces: placesTypes,
   checkedTypesPlaces: placesTypes,
+  direction: null,
   map: null,
   isLoading: false,
   error: ''
@@ -54,6 +56,9 @@ const placesSlice = createSlice({
     },
     setMap(state, action: PayloadAction<TMap | null>) {
      state.map = action.payload
+    },
+    setDirection(state, action: PayloadAction<DirectionsResult | null>) {
+     state.direction = action.payload
     }
   }
 })
@@ -64,7 +69,8 @@ export const {
   placesFetchingSuccess,
   fetchDetailPageSuccess,
   checkTypePlaces,
-  setMap
+  setMap,
+  setDirection
 } = placesSlice.actions
 
 export default placesSlice.reducer
