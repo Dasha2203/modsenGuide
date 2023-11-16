@@ -26,7 +26,6 @@ export const addFavoritesPlace = (place: TFavoritePlace) => async (dispatch: App
 
     dispatch(pushFavoritesPlace(place))
   } catch (err) {
-    console.log('dasha')
     console.log(err)
   }
 }

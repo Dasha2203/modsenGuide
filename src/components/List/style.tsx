@@ -1,4 +1,4 @@
-import { List } from '@mui/material'
+import { List, ListItemButton } from '@mui/material'
 import styled from '@emotion/styled/macro'
 
 export const StyledList = styled(List)(({ theme }) => ({
@@ -10,3 +10,8 @@ export const StyledList = styled(List)(({ theme }) => ({
   overflowY: 'auto',
 }),
 );
+
+export const StyledListButton = styled(ListItemButton)(() => ({
+  padding: '10px 20px',
+  // opacity: props.active ? '1' : '0.5'
+}))

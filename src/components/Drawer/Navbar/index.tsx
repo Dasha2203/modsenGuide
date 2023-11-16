@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Avatar, Menu, MenuItem } from '@mui/material'
 
 import Link from 'components/Link'
@@ -7,11 +7,13 @@ import LoginIcon from 'icons/LoginIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import SearchIcon from 'icons/SearchIcon'
 import { AvatarButton, Button, ButtonGroup, Logo, WrapNavbar } from './style'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import IconButton from 'components/IconButton'
 
 const Navbar = () => {
   const { email } = useAuth()
   const navigate = useNavigate()
+  const { pathname } = useLocation()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
 
@@ -26,12 +28,20 @@ const Navbar = () => {
     <WrapNavbar>
       <Logo />
       <ButtonGroup>
-        <Button onClick={() => navigate('/')}>
-          <SearchIcon fill="#5E7BC7" />
-        </Button>
-        <Button onClick={() => navigate('/favorites')}>
+        <IconButton 
+          onClick={() => navigate('/')}
+          active={pathname === '/'}
+          color="primary"
+        >
+          <SearchIcon />
+        </IconButton>
+        <IconButton
+          onClick={() => navigate('/favorites')}
+          active={pathname === '/favorites'}
+          color="secondary"
+        >
           <FavoriteIcon />
-        </Button>
+        </IconButton>
       </ButtonGroup>
 
       {true ? (

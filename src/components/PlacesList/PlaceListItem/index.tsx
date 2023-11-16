@@ -14,7 +14,7 @@ type ItemProps = {
 const PlaceListItem = ({ item, isActive }: ItemProps) => {
   const { id, src, text } = item
   return (
-    <Item key={id} isActive={isActive}>
+    <Item key={id} active={isActive}>
       <img src={src} />
       <ItemText>{text}</ItemText>
     </Item>
