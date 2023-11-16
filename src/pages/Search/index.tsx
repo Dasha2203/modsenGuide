@@ -7,18 +7,29 @@ import PlacesList from 'components/PlacesList'
 import { Wrap } from './style'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import { fetchPlaces } from 'store/slices/places/actionCreators'
+import { useState } from 'react'
+import { setRadius } from 'store/slices/places/placesSlice'
+import { InputContainer, InputUnit } from 'components/Input/style'
 
 const Search = () => {
   const dispatch = useAppDispatch()
   const { userLocation } = useAppSelector(state => state.userReducer)
-  const { map, checkedTypesPlaces } = useAppSelector(state => state.placesReducer)
+  const { map, checkedTypesPlaces, radius } = useAppSelector(state => state.placesReducer)
+  const [inputRadius, setInputRadius] = useState(radius / 1000)
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.value.match(/^\d+$/)) return
+
+    setInputRadius(+e.target.value)
+  }
 
   function handleSearch() {
     if (!userLocation || !map) return
 
+    dispatch(setRadius(inputRadius * 1000))
     dispatch(fetchPlaces({
       location: userLocation,
-      radius: 10000,
+      radius: inputRadius * 1000,
       types: checkedTypesPlaces.map(i => i.type),
       map
     }))
@@ -29,7 +40,10 @@ const Search = () => {
       <Label>Искать:</Label>
       <PlacesList />
       <Label>В радиусе:</Label>
-      <Input variant="outlined" value={23} onChange={() => { }} />
+      <InputContainer>
+        <Input size="small" variant="outlined" value={inputRadius} onChange={handleChange} />
+        <InputUnit>км</InputUnit>
+      </InputContainer>
 
       <Button
         variant="contained"

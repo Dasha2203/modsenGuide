@@ -28,7 +28,7 @@ const Navbar = () => {
     <WrapNavbar>
       <Logo />
       <ButtonGroup>
-        <IconButton 
+        <IconButton
           onClick={() => navigate('/')}
           active={pathname === '/'}
           color="primary"
@@ -49,7 +49,7 @@ const Navbar = () => {
           <Avatar />
         </AvatarButton>
       ) : (
-        <Link href="/login">
+        <Link to="/login">
           <LoginIcon />
         </Link>
       )}

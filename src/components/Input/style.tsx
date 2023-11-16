@@ -1,4 +1,4 @@
-import { TextField } from '@mui/material'
+import { Box, TextField, Typography } from '@mui/material'
 import styled from '@emotion/styled/macro'
 
 export const StyledInput = styled(TextField)(() => ({
@@ -14,4 +14,18 @@ export const StyledInput = styled(TextField)(() => ({
       borderWidth: 3
     }
   }
+}))
+
+export const InputContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '20px',
+  '& .MuiInputBase-sizeSmall': {
+    maxWidth: '100px'
+  }
+}))
+
+export const InputUnit = styled(Typography)(({ theme }) => ({
+  fontSize: '16px',
+  fontWeight: 700
 }))

@@ -1,10 +1,11 @@
-import { LinkProps, Link as MuiLink } from '@mui/material'
-import { FC } from 'react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { LinkProps as MuiLinkProps, Link as MuiLink } from '@mui/material'
+import { LinkProps, Link as ReactRouterLink } from 'react-router-dom'
 
-const Link:FC<LinkProps> = (props) => {
+type Props = LinkProps & MuiLinkProps
+
+const Link = (props: Props) => {
   return (
-    <MuiLink {...props} component={ReactRouterLink} to={props.href ?? "#"}/>
+    <MuiLink {...props} component={ReactRouterLink}/>
   )
 }
 
