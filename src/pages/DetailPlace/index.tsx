@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { CardContent, CardMedia } from '@mui/material'
 
 import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
@@ -11,9 +11,12 @@ import { TFavoritePlace } from 'types'
 import DirectionIcon from 'icons/DirectionIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import Button from 'components/Button'
+import LeftArrowIcon from 'icons/LeftArrowIcon'
+import SectionLink from 'components/SectionLink'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)
+  const location = useLocation()
   const dispatch = useAppDispatch()
   const { places, map, placeDetail } = useAppSelector(state => state.placesReducer)
   const { favoritePlaces, user, userLocation } = useAppSelector(state => state.userReducer)
@@ -76,6 +79,12 @@ const DetailPlace = () => {
 
   return (
     <Wrap>
+      {location.state?.prev === '/favorites' && (
+        <SectionLink to="/favorites" sx={{mb: '15px'}}>
+          <LeftArrowIcon/>
+          Избранное
+        </SectionLink>
+      )}
       {placeDetail && (
         <Card>
           <CardMedia

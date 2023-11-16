@@ -12,6 +12,7 @@ interface IPlaceState {
   isLoading: boolean
   error: string
   direction: DirectionsResult | null
+  radius: number
 }
 
 const initialState: IPlaceState = {
@@ -24,6 +25,7 @@ const initialState: IPlaceState = {
   zoom: 15,
   isLoading: false,
   error: '',
+  radius: 10000
 }
 
 const placesSlice = createSlice({
@@ -64,6 +66,9 @@ const placesSlice = createSlice({
     },
     setDirection(state, action: PayloadAction<DirectionsResult | null>) {
      state.direction = action.payload
+    },
+    setRadius(state, action: PayloadAction<number>) {
+     state.radius = action.payload
     }
   }
 })
@@ -76,7 +81,8 @@ export const {
   checkTypePlaces,
   setMap,
   setDirection,
-  setZoom
+  setZoom,
+  setRadius
 } = placesSlice.actions
 
 export default placesSlice.reducer

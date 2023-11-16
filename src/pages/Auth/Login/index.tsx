@@ -84,7 +84,7 @@ export const Login = () => {
             render={({ field }) => (
               <Input
                 label="Email"
-                fullWidth={true}
+                fullWidth
                 size="medium"
                 margin="normal"
                 variant="outlined"
@@ -132,7 +132,7 @@ export const Login = () => {
           <Typography>
             Вы не зарегистрированы?
           </Typography>
-          <Link href="/register">Регистрация</Link>
+          <Link to={"/register"}>Регистрация</Link>
         </Box>
       </Box>
     </Box>

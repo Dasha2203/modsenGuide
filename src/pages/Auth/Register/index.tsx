@@ -170,7 +170,7 @@ export const Register = () => {
             <Typography>
               Вы уже зарегистрированы?
             </Typography>
-            <Link href="/login">Войти</Link>
+            <Link to={"/login"}>Войти</Link>
           </Box>
         </Box>
       </Container>

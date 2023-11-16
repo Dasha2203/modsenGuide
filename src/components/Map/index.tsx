@@ -13,7 +13,7 @@ import locationImg from 'icons/location.svg'
 const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const { places, direction, zoom } = useAppSelector((state) => state.placesReducer)
+  const { places, direction, zoom, radius } = useAppSelector((state) => state.placesReducer)
   const { userLocation } = useAppSelector((state) => state.userReducer)
 
   useEffect(() => {
@@ -21,9 +21,6 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   }, [])
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
-    // const bounds = new window.google.maps.LatLngBounds(userLocation);
-    // map.fitBounds(bounds);
-
     dispatch(setMap(map))
   }, [userLocation])
 
@@ -99,21 +96,12 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
           <Marker position={userLocation} icon={{url: locationImg}}/>
           <Circle
             center={userLocation}
-            radius={10000}
+            radius={radius}
             options={{
               fillColor: '#5E7CC7',
               fillOpacity: 0.1,
               strokeColor: '#5E7CC7',
               strokeOpacity: 0.2
-            }}
-          />
-          <Circle
-            center={userLocation}
-            radius={1000}
-            options={{
-              fillColor: '#5E7CC7',
-              fillOpacity: 0.2,
-              strokeWeight: 0,
             }}
           />
         </GoogleMap>

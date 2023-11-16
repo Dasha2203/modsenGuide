@@ -1,14 +1,15 @@
 import { forwardRef } from 'react'
-import { OutlinedTextFieldProps } from '@mui/material'
+import { OutlinedTextFieldProps, TextFieldProps } from '@mui/material'
 
 import { StyledInput } from './style'
 
-const Input = forwardRef<HTMLInputElement, OutlinedTextFieldProps>(({
+const Input = forwardRef<HTMLInputElement, TextFieldProps>(({
   label,
   onChange,
   value,
   error,
   helperText,
+  fullWidth,
   size,
   variant
 }, forwardRef) => (
@@ -17,8 +18,8 @@ const Input = forwardRef<HTMLInputElement, OutlinedTextFieldProps>(({
     label={label}
     onChange={onChange}
     value={value}
-    fullWidth={true}
     size={size}
+    fullWidth={fullWidth}
     margin="normal"
     variant={variant}
     error={error}
