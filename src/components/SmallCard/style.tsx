@@ -1,4 +1,4 @@
-import { Box, CardMedia, Card as MuiCard, Typography, styled } from '@mui/material'
+import { Box, Card as MuiCard, CardMedia, styled,Typography } from '@mui/material'
 
 export const Card = styled(MuiCard)(() => ({
   padding: '20px 30px 23px 20px',

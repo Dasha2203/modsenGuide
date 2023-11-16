@@ -1,18 +1,18 @@
-import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
 import { CardContent, CardMedia } from '@mui/material'
-
-import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
+import Button from 'components/Button'
+import SectionLink from 'components/SectionLink'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
-import { fetchDirection, fetchPlace } from 'store/slices/places/actionCreators'
-import { fetchDetailPageSuccess } from 'store/slices/places/placesSlice'
-import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/actionCreators'
-import { TFavoritePlace } from 'types'
 import DirectionIcon from 'icons/DirectionIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
-import Button from 'components/Button'
 import LeftArrowIcon from 'icons/LeftArrowIcon'
-import SectionLink from 'components/SectionLink'
+import { useEffect, useState } from 'react'
+import { useLocation, useParams } from 'react-router-dom'
+import { fetchDirection, fetchPlace } from 'store/slices/places/actionCreators'
+import { fetchDetailPageSuccess, setDirection } from 'store/slices/places/placesSlice'
+import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/actionCreators'
+import { TFavoritePlace } from 'types'
+
+import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)
@@ -21,6 +21,12 @@ const DetailPlace = () => {
   const { places, map, placeDetail } = useAppSelector(state => state.placesReducer)
   const { favoritePlaces, user, userLocation } = useAppSelector(state => state.userReducer)
   const { id } = useParams<{ id: string }>()
+
+  useEffect(() => {
+    return () => {
+      dispatch(setDirection(null))
+    }
+  }, [])
 
   useEffect(() => {
     let place = places.find((place) => place.place_id === id)
@@ -54,15 +60,17 @@ const DetailPlace = () => {
     if (isFavorite) {
       dispatch(removeFavoritesPlaces({ placeId: id }))
     } else {
+      const {name, place_id: placeId, types, url, geometry, photos, formatted_address} = placeDetail
+
       const favoritePlace: TFavoritePlace = {
-        name: placeDetail.name,
-        placeId: placeDetail.place_id,
-        types: placeDetail.types,
-        url: placeDetail.url,
-        lat: placeDetail.geometry?.location?.lat(),
-        lng: placeDetail.geometry?.location?.lng(),
-        photo: placeDetail.photos?.[0].getUrl(),
-        formatted_address: placeDetail?.formatted_address,
+        name,
+        placeId,
+        types,
+        url,
+        lat: geometry?.location?.lat(),
+        lng: geometry?.location?.lng(),
+        photo: photos?.[0].getUrl(),
+        formatted_address,
         userId: user.id
       }
 
@@ -71,10 +79,14 @@ const DetailPlace = () => {
   }
 
   function showDirection() {
-    if (!userLocation || !placeDetail || !placeDetail.lat || !placeDetail.lng) return
-    const {lat, lng} = placeDetail
+    if (!userLocation || !placeDetail || !placeDetail.geometry || !placeDetail.geometry.location) return
 
-    dispatch(fetchDirection(userLocation, {lat, lng}))
+    const placeLocation = {
+      lat: placeDetail.geometry.location.lat(),
+      lng: placeDetail.geometry.location.lng(),
+    }
+
+    dispatch(fetchDirection(userLocation, placeLocation))
   }
 
   return (
@@ -108,7 +120,7 @@ const DetailPlace = () => {
             <Button
               size="small"
               variant="outlined"
-              startIcon={<FavoriteIcon />}
+              startIcon={<FavoriteIcon fill={isFavorite ? '#808080' : '#FFFFFF'}/>}
               onClick={handleClick}
             >
               {isFavorite ? 'Сохранено' : 'Сохранить'}

@@ -1,14 +1,13 @@
+import { Box } from '@mui/material'
+import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
+import ControlButtons from 'components/ControlButtons'
+import InfoPanel from 'components/InfoPanel'
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
+import locationImg from 'icons/location.svg'
 import { useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
-import { Box } from '@mui/material'
-
-import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
-import { setUserLocation } from 'store/slices/user/userSlice'
 import { setMap } from 'store/slices/places/placesSlice'
-import InfoPanel from 'components/InfoPanel'
-import ControlButtons from 'components/ControlButtons'
-import locationImg from 'icons/location.svg'
+import { setUserLocation } from 'store/slices/user/userSlice'
 
 const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   const dispatch = useAppDispatch()

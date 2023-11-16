@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IUser } from 'models/IUser'
-import { TFavoritePlace, TLocation } from 'types'
+import { TFavoritePlace } from 'types'
 
 interface UserState {
   user: IUser,

@@ -1,5 +1,5 @@
-import { LinkProps as MuiLinkProps, Link as MuiLink } from '@mui/material'
-import { LinkProps, Link as ReactRouterLink } from 'react-router-dom'
+import { Link as MuiLink,LinkProps as MuiLinkProps } from '@mui/material'
+import { Link as ReactRouterLink,LinkProps } from 'react-router-dom'
 
 type Props = LinkProps & MuiLinkProps
 

@@ -1,9 +1,10 @@
 
 import { Avatar, InputAdornment, TextField } from '@mui/material'
-import { AutoCompleteInput, StyledAutoComplete } from './style'
-import usePlacesAutocomplete from 'use-places-autocomplete';
 import { PlacesTypes } from 'models/IPlace';
 import { useEffect } from 'react';
+import usePlacesAutocomplete from 'use-places-autocomplete';
+
+import { AutoCompleteInput, StyledAutoComplete } from './style'
 
 const AutoComplete = ({ radius, types }: { radius: number, types: PlacesTypes[] }) => {
   const {

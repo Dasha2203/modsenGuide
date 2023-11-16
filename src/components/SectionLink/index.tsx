@@ -1,5 +1,6 @@
-import { LinkProps } from 'react-router-dom'
 import { LinkProps as MuiLinkProps } from '@mui/material'
+import { LinkProps } from 'react-router-dom'
+
 import { StyledLink } from './style'
 
 type Props = LinkProps & MuiLinkProps & {}

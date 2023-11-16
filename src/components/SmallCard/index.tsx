@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+
 import { Card, CardFooter, CardHeader, CardImage, CardText, CardTitle } from './style'
 
 type PropsSmallCard = {

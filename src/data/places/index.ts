@@ -1,5 +1,5 @@
-import sportIcon from 'icons/places/sport.svg'
 import coffeIcon from 'icons/places/coffee.svg'
+import sportIcon from 'icons/places/sport.svg'
 import { PlacesTypes } from 'models/IPlace'
 
 export type PlaceTypeItem = {

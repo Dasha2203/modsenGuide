@@ -1,26 +1,31 @@
 import { Button } from '@mui/material'
 import { SearchIcon } from 'components/Drawer/SearchBar/style'
-
 import Input from 'components/Input'
+import { InputContainer, InputUnit } from 'components/Input/style'
 import Label from 'components/Label'
 import PlacesList from 'components/PlacesList'
-import { Wrap } from './style'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
-import { fetchPlaces } from 'store/slices/places/actionCreators'
 import { useState } from 'react'
+import { fetchPlaces } from 'store/slices/places/actionCreators'
 import { setRadius } from 'store/slices/places/placesSlice'
-import { InputContainer, InputUnit } from 'components/Input/style'
+
+import { Wrap } from './style'
 
 const Search = () => {
   const dispatch = useAppDispatch()
   const { userLocation } = useAppSelector(state => state.userReducer)
   const { map, checkedTypesPlaces, radius } = useAppSelector(state => state.placesReducer)
   const [inputRadius, setInputRadius] = useState(radius / 1000)
+  const [query, setQuery] = useState('')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.value.match(/^\d+$/)) return
 
     setInputRadius(+e.target.value)
+  }
+
+  function handleChangeQuery(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value)
   }
 
   function handleSearch() {
@@ -31,12 +36,14 @@ const Search = () => {
       location: userLocation,
       radius: inputRadius * 1000,
       types: checkedTypesPlaces.map(i => i.type),
-      map
+      map,
+      query
     }))
   }
 
   return (
     <Wrap>
+      <Input label="Место, адрес" onChange={handleChangeQuery}/>
       <Label>Искать:</Label>
       <PlacesList />
       <Label>В радиусе:</Label>

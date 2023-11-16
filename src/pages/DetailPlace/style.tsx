@@ -1,4 +1,4 @@
-import { Box, CardActions as MuiCardActions, CardMedia, Card as MuiCard, Typography } from '@mui/material'
+import { Box, Card as MuiCard, CardActions as MuiCardActions, CardMedia, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
 

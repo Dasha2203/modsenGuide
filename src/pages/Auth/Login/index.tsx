@@ -1,12 +1,11 @@
-import { useState } from 'react'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Box, Button, Typography } from '@mui/material'
-import { useForm, SubmitHandler, Controller } from 'react-hook-form'
-import { useAppDispatch } from 'hooks/redux-hooks'
-import { useNavigate } from 'react-router-dom'
-
 import Input from 'components/Input'
 import Link from 'components/Link'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useAppDispatch } from 'hooks/redux-hooks'
+import { useState } from 'react'
+import { Controller,SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { setUser } from "store/slices/user/userSlice"
 
 type LoginForm = {
@@ -18,7 +17,7 @@ export const Login = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const [error, setError] = useState('')
-  const { handleSubmit, control } = useForm<LoginForm>({
+  const { handleSubmit, control, formState: { errors } } = useForm<LoginForm>({
     defaultValues: {
       password: '',
       email: ''
@@ -60,7 +59,7 @@ export const Login = () => {
         alignItems: 'center'
       }}
     >
-      <Box>
+      <Box sx={{ maxWidth: '500px', margin: '0 auto' }}>
         <Typography
           variant="h3"
           sx={{
@@ -78,7 +77,7 @@ export const Login = () => {
               required: 'Почта обязательна для заполнения',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "invalid email address dashka"
+                message: "Неверный формат почты"
               }
             }}
             render={({ field }) => (
@@ -88,6 +87,8 @@ export const Login = () => {
                 size="medium"
                 margin="normal"
                 variant="outlined"
+                error={!!errors.email}
+                helperText={errors.email?.message}
                 value={field.value}
                 onChange={(e) => field.onChange(e)}
               />
@@ -110,6 +111,8 @@ export const Login = () => {
                 size="medium"
                 margin="normal"
                 variant="outlined"
+                error={!!errors.password}
+                helperText={errors.password?.message}
                 value={field.value}
                 onChange={(e) => field.onChange(e)}
               />

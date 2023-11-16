@@ -1,15 +1,15 @@
-import Container from '@mui/material/Container'
 import { Box, Button, Typography } from '@mui/material'
-import { useForm, SubmitHandler, Controller } from 'react-hook-form'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
-import { collection, addDoc } from 'firebase/firestore'
-
+import Container from '@mui/material/Container'
 import Input from 'components/Input'
 import Link from 'components/Link';
-import { db } from './../../../firebase'
+import { createUserWithEmailAndPassword,getAuth } from 'firebase/auth'
+import { addDoc,collection } from 'firebase/firestore'
 import { useAppDispatch } from 'hooks/redux-hooks';
+import { Controller,SubmitHandler, useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { setUser } from 'store/slices/user/userSlice';
+
+import { db } from './../../../firebase'
 
 type RegisterForm = {
   name: string

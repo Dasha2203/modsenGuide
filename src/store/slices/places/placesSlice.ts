@@ -25,7 +25,7 @@ const initialState: IPlaceState = {
   zoom: 15,
   isLoading: false,
   error: '',
-  radius: 10000
+  radius: 10000,
 }
 
 const placesSlice = createSlice({
