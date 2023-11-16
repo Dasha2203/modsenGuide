@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { placesTypes, PlaceTypeItem } from 'data/places'
-import { DirectionsResult, TDetailPlaceResult, TMap } from 'types'
+import { DirectionsResult, TDetailPlaceResult, TMap, TPlacesResult } from 'types'
 
 interface IPlaceState {
-  places:  google.maps.places.PlaceResult[],
+  places:  TPlacesResult[],
   placeDetail: TDetailPlaceResult | null
   typesPlaces: PlaceTypeItem[],
   checkedTypesPlaces: PlaceTypeItem[],
   map: google.maps.Map | null
+  zoom: number
   isLoading: boolean
   error: string
   direction: DirectionsResult | null
@@ -20,8 +21,9 @@ const initialState: IPlaceState = {
   checkedTypesPlaces: placesTypes,
   direction: null,
   map: null,
+  zoom: 15,
   isLoading: false,
-  error: ''
+  error: '',
 }
 
 const placesSlice = createSlice({
@@ -31,7 +33,7 @@ const placesSlice = createSlice({
     placesFetching(state) {
       state.isLoading = true
     },
-    placesFetchingSuccess(state, action: PayloadAction< google.maps.places.PlaceResult[]>) {
+    placesFetchingSuccess(state, action: PayloadAction<TPlacesResult[]>) {
       state.isLoading = false
       state.error = ''
       state.places = action.payload
@@ -57,6 +59,9 @@ const placesSlice = createSlice({
     setMap(state, action: PayloadAction<TMap | null>) {
      state.map = action.payload
     },
+    setZoom(state, action: PayloadAction<number>) {
+     state.zoom = action.payload
+    },
     setDirection(state, action: PayloadAction<DirectionsResult | null>) {
      state.direction = action.payload
     }
@@ -70,7 +75,8 @@ export const {
   fetchDetailPageSuccess,
   checkTypePlaces,
   setMap,
-  setDirection
+  setDirection,
+  setZoom
 } = placesSlice.actions
 
 export default placesSlice.reducer

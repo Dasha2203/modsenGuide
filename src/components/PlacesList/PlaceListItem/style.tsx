@@ -1,17 +1,20 @@
+import styled from '@emotion/styled';
 import { Box, Typography } from '@mui/material'
-import { styled } from '@mui/material/styles'
 
-export const Item = styled(Box)((props: { isActive: boolean }) => ({
+export const Item = styled(Box, 
+  {shouldForwardProp: (prop) => prop !== "lowerCase" && prop !== "active"}
+)<{ active?: boolean }>(({theme, active}) => ({
   display: 'grid',
   gridTemplateColumns: '30px auto',
   alignItems: 'center',
   gap: '20px',
-  opacity: props.isActive ? '1' : '0.5'
-}),
-);
+  opacity: active ? '1' : '0.5'
+
+}))
+
 
 export const ItemText = styled(Typography)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 700
 }),
-);
+)

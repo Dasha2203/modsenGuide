@@ -1,38 +1,28 @@
 import { useCallback, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
 import { Box } from '@mui/material'
 
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import { setUserLocation } from 'store/slices/user/userSlice'
-import { TLocation } from 'types'
 import { setMap } from 'store/slices/places/placesSlice'
-import { fetchPlaces } from 'store/slices/places/actionCreators'
+import InfoPanel from 'components/InfoPanel'
+import ControlButtons from 'components/ControlButtons'
+import locationImg from 'icons/location.svg'
 
 const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   const dispatch = useAppDispatch()
-  const { places, map, checkedTypesPlaces, direction } = useAppSelector((state) => state.placesReducer)
+  const navigate = useNavigate()
+  const { places, direction, zoom } = useAppSelector((state) => state.placesReducer)
   const { userLocation } = useAppSelector((state) => state.userReducer)
 
   useEffect(() => {
     getPosition()
   }, [])
 
-  // useEffect(() => {
-  //   if (!userLocation || !map) return
-
-  //   dispatch(fetchPlaces({
-  //     location: userLocation,
-  //     radius: 10000,
-  //     types: checkedTypesPlaces.map(i => i.type),
-  //     map
-  //   }))
-
-  // }, [userLocation])
-
-
   const onLoad = useCallback(function callback(map: google.maps.Map) {
-    const bounds = new window.google.maps.LatLngBounds(userLocation);
-    map.fitBounds(bounds);
+    // const bounds = new window.google.maps.LatLngBounds(userLocation);
+    // map.fitBounds(bounds);
 
     dispatch(setMap(map))
   }, [userLocation])
@@ -60,16 +50,25 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   }
 
   return (
-    <Box sx={{ width: 'calc(100% - 510px)', ml: 'auto', height: '100vh', background: 'green' }}>
-      {isLoaded}
+    <Box sx={{ width: 'calc(100% - 600px)', ml: 'auto', height: '100vh', background: 'green', position: 'relative' }}>
+      {direction && (
+        <InfoPanel items={[
+          { label: 'Дистанция', value: direction.routes[0].legs[0].distance?.text },
+          { label: 'Примерное время', value: direction.routes[0].legs[0].duration?.text },
+        ]}
+        />
+      )}
+      <ControlButtons/>
       {isLoaded && userLocation ? (
         <GoogleMap
           center={userLocation}
-          zoom={15}
           onLoad={onLoad}
+          zoom={zoom}
           onUnmount={onUnmount}
           mapContainerClassName="map"
           options={{
+            minZoom: 4,
+            maxZoom: 18,
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
@@ -87,17 +86,17 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
               }}
             />
           )}
-          {places.filter(place => !!place.geometry).map(place => {
+          {places.filter(place => !!place.geometry?.location).map(place => {
             return (
               <Marker
                 key={place.place_id}
                 position={place.geometry?.location!}
-                onClick={() => console.log('click')}
+                onClick={() => navigate(`/place/${place.place_id}`)}
               />
             )
 
           })}
-          <Marker position={userLocation} />
+          <Marker position={userLocation} icon={{url: locationImg}}/>
           <Circle
             center={userLocation}
             radius={10000}
@@ -106,6 +105,15 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
               fillOpacity: 0.1,
               strokeColor: '#5E7CC7',
               strokeOpacity: 0.2
+            }}
+          />
+          <Circle
+            center={userLocation}
+            radius={1000}
+            options={{
+              fillColor: '#5E7CC7',
+              fillOpacity: 0.2,
+              strokeWeight: 0,
             }}
           />
         </GoogleMap>

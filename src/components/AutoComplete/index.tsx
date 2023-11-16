@@ -21,9 +21,6 @@ const AutoComplete = ({ radius, types }: { radius: number, types: PlacesTypes[] 
     debounce: 300,
   });
 
-  useEffect(() => {
-    console.log(data)
-  },[data])
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };

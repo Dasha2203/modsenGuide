@@ -1,9 +1,9 @@
 import { AppDispatch } from 'store'
 import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
-import { LatLngLiteral, TDetailPlaceResult, TLocation, TMap, TPlacesResult } from 'types'
+import { LatLngLiteral, TMap, TPlacesResult } from 'types'
 
 type TFetchPlacesProps = {
-  location: TLocation,
+  location: LatLngLiteral,
   types: string[],
   radius: number,
   map: TMap
@@ -26,10 +26,16 @@ export const fetchPlaces = ({
       const request = {
         location,
         radius,
-        type: types[i]
+        type: types[i],
+        fields: [
+          'name',
+          'place_id',
+          'geometry',
+          'types',
+        ],
       }
 
-      let job: Promise<TPlacesResult[]> = new Promise(function (resolve, reject) {
+      let job: Promise<google.maps.places.PlaceResult[]> = new Promise(function (resolve, reject) {
         service.nearbySearch(request, (results: TPlacesResult[] | null, status) => {
           resolve(results || [])
         });
@@ -37,7 +43,7 @@ export const fetchPlaces = ({
 
       requests.push(job)
     }
-    const allResults = await Promise.all(requests);
+    const allResults = await Promise.all(requests)
     console.log('all results: ', allResults.flat())
     dispatch(placesFetchingSuccess(allResults.flat()))
 
@@ -99,7 +105,7 @@ export const fetchDirection = (origin: LatLngLiteral, destination: LatLngLiteral
 
     service.route({
       origin,
-      destination: { lat: 53.78409860843558, lng: 27.628201620446013 },
+      destination,
       travelMode: google.maps.TravelMode.DRIVING
     },
       (result, status) => {

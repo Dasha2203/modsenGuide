@@ -68,9 +68,10 @@ const DetailPlace = () => {
   }
 
   function showDirection() {
-    if (!userLocation || !placeDetail) return
+    if (!userLocation || !placeDetail || !placeDetail.lat || !placeDetail.lng) return
+    const {lat, lng} = placeDetail
 
-    dispatch(fetchDirection(userLocation, userLocation))
+    dispatch(fetchDirection(userLocation, {lat, lng}))
   }
 
   return (

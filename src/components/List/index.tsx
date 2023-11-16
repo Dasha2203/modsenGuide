@@ -1,8 +1,7 @@
 import React from 'react'
 import { ListItem } from '@mui/material'
 
-import { StyledList } from './style'
-import { StyledListButton } from './ListItem/style'
+import { StyledList, StyledListButton } from './style'
 
 type ListProps<A> = {
   onChange: (value: A) => void
@@ -23,7 +22,6 @@ const List = <A extends unknown>({ items, itemAs, checked, onChange }: ListProps
           >
             <StyledListButton onClick={() => onChange(item)}>
               {itemAs(item)}
-              {/* {itemAs(checked)} */}
             </StyledListButton>
           </ListItem>
         )
