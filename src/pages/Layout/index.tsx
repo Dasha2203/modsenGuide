@@ -16,7 +16,7 @@ export const Layout = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBlS8RLUN-7rC0v-09mUrmPA7taL4tpVvs",
+    googleMapsApiKey:  process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
     libraries: ["places"],
   })
 
