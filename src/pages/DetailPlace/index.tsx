@@ -1,6 +1,7 @@
 import { Box, CardContent, CardMedia } from '@mui/material'
 import Button from 'components/Button'
 import SectionLink from 'components/SectionLink'
+import TypesList from 'components/TypesList'
 import { placesTypes } from 'const'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import DirectionIcon from 'icons/DirectionIcon'
@@ -14,7 +15,6 @@ import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/acti
 import { TFavoritePlace } from 'types'
 
 import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
-import TypesList from 'components/TypesList'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)
