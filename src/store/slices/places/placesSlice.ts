@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { placesTypes, PlaceTypeItem } from 'data/places'
+import { placesTypes } from 'const'
 import { DirectionsResult, TDetailPlaceResult, TMap, TPlacesResult } from 'types'
+import { PlaceTypeItem } from 'types/placeTypeItem'
 
 interface IPlaceState {
   places:  TPlacesResult[],
@@ -25,7 +26,7 @@ const initialState: IPlaceState = {
   zoom: 15,
   isLoading: false,
   error: '',
-  radius: 10000
+  radius: 10000,
 }
 
 const placesSlice = createSlice({

@@ -1,4 +1,4 @@
-import { Box, CardMedia, Card as MuiCard, Typography, styled } from '@mui/material'
+import { Box, Card as MuiCard, CardMedia, styled,Typography } from '@mui/material'
 
 export const Card = styled(MuiCard)(() => ({
   padding: '20px 30px 23px 20px',
@@ -11,6 +11,7 @@ export const Card = styled(MuiCard)(() => ({
 }))
 
 export const CardHeader = styled(Box)(() => ({
+  marginBottom: '20px',
   display: 'flex',
   alignItems: 'center',
   gap: '20px'

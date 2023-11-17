@@ -1,19 +1,22 @@
 import { AppDispatch } from 'store'
-import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
 import { LatLngLiteral, TMap, TPlacesResult } from 'types'
+
+import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
 
 type TFetchPlacesProps = {
   location: LatLngLiteral,
   types: string[],
   radius: number,
-  map: TMap
+  map: TMap,
+  query: string
 }
 
 export const fetchPlaces = ({
   location,
   types,
   radius,
-  map
+  map,
+  query
 }: TFetchPlacesProps) => async (dispatch: AppDispatch) => {
   try {
     dispatch(placesFetching())
@@ -26,6 +29,7 @@ export const fetchPlaces = ({
       const request = {
         location,
         radius,
+        query,
         type: types[i],
         fields: [
           'name',

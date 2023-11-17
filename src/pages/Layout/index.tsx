@@ -1,15 +1,14 @@
-import { useEffect } from 'react'
 import { useJsApiLoader } from '@react-google-maps/api'
-
-
-import useAuth from 'hooks/use-auth'
 import Drawer from 'components/Drawer'
 import Map from 'components/Map'
 import { useAppDispatch } from 'hooks/redux-hooks'
-import { auth } from '../../firebase'
-import { removeUser, setUser } from 'store/slices/user/userSlice'
-import { StyledBox } from './style'
+import useAuth from 'hooks/use-auth'
+import { useEffect } from 'react'
 import { getFavoritesPlaces } from 'store/slices/user/actionCreators'
+import { removeUser, setUser } from 'store/slices/user/userSlice'
+
+import { auth } from '../../firebase'
+import { StyledBox } from './style'
 
 export const Layout = () => {
   const dispatch = useAppDispatch()

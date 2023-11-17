@@ -1,7 +1,8 @@
 import List from 'components/List'
-import PlaceListItem from './PlaceListItem'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import { checkTypePlaces } from 'store/slices/places/placesSlice'
+
+import PlaceListItem from './PlaceListItem'
 
 const PlacesList = () => {
   const { checkedTypesPlaces, typesPlaces } = useAppSelector(state => state.placesReducer)

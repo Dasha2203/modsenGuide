@@ -1,13 +1,7 @@
-import sportIcon from 'icons/places/sport.svg'
 import coffeIcon from 'icons/places/coffee.svg'
+import sportIcon from 'icons/places/sport.svg'
 import { PlacesTypes } from 'models/IPlace'
-
-export type PlaceTypeItem = {
-  id: string
-  src: string
-  text: string
-  type: PlacesTypes
-}
+import { PlaceTypeItem } from 'types/placeTypeItem'
 
 export const placesTypes: PlaceTypeItem[] = [
   {

@@ -1,4 +1,4 @@
-import { Property, Row, StyledBox, Value, Label } from './style'
+import { Label, Property, Row, StyledBox, Value } from './style'
 
 type TItems = {
   label: string
@@ -14,11 +14,11 @@ const InfoPanel = ({ items }: Props) => {
   return (
     <StyledBox>
       <Row>
-        {items.map(item => (
-          <Property>
-            <Value>{item.value}</Value>
-            <Label>{item.label}</Label>
-          </Property>
+        {items.map(({ value, label }, idx) => (
+        <Property key={idx}>
+          <Value>{value}</Value>
+          <Label>{label}</Label>
+        </Property>
         ))}
       </Row>
     </StyledBox>

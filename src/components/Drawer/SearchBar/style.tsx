@@ -1,10 +1,9 @@
-import { Box } from '@mui/material'
 import styled from '@emotion/styled/macro'
-
+import { Box } from '@mui/material'
+import { StyledAutoComplete } from 'components/AutoComplete/style'
 import { StyledInput } from 'components/Input/style'
 import { StyledList } from 'components/List/style'
 import Search from 'icons/SearchIcon'
-import { StyledAutoComplete } from 'components/AutoComplete/style'
 
 export const WrapSearchBar = styled(Box)`
   padding: 25px 25px 0;

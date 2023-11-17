@@ -1,6 +1,5 @@
 import { Box, Button as MuiButton } from '@mui/material'
 import { styled } from '@mui/material/styles'
-
 import LogoIcon from 'icons/LogoIcon'
 
 export const Logo = styled(LogoIcon)(({ theme }) => ({
