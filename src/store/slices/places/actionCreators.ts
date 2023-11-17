@@ -1,6 +1,7 @@
 import { AppDispatch } from 'store'
-import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
 import { LatLngLiteral, TMap, TPlacesResult } from 'types'
+
+import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
 
 type TFetchPlacesProps = {
   location: LatLngLiteral,

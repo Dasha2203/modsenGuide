@@ -1,6 +1,7 @@
-import { CardContent, CardMedia } from '@mui/material'
+import { Box, CardContent, CardMedia } from '@mui/material'
 import Button from 'components/Button'
 import SectionLink from 'components/SectionLink'
+import { placesTypes } from 'const'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import DirectionIcon from 'icons/DirectionIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
@@ -13,6 +14,7 @@ import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/acti
 import { TFavoritePlace } from 'types'
 
 import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
+import TypesList from 'components/TypesList'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)
@@ -60,7 +62,7 @@ const DetailPlace = () => {
     if (isFavorite) {
       dispatch(removeFavoritesPlaces({ placeId: id }))
     } else {
-      const {name, place_id: placeId, types, url, geometry, photos, formatted_address} = placeDetail
+      const { name, place_id: placeId, types, url, geometry, photos, formatted_address } = placeDetail
 
       const favoritePlace: TFavoritePlace = {
         name,
@@ -92,8 +94,8 @@ const DetailPlace = () => {
   return (
     <Wrap>
       {location.state?.prev === '/favorites' && (
-        <SectionLink to="/favorites" sx={{mb: '15px'}}>
-          <LeftArrowIcon/>
+        <SectionLink to="/favorites" sx={{ mb: '15px' }}>
+          <LeftArrowIcon />
           Избранное
         </SectionLink>
       )}
@@ -103,10 +105,11 @@ const DetailPlace = () => {
             component="img"
             alt={placeDetail.name}
             width={'100%'}
-            sx={{ borderRadius: '10px' }}
+            sx={{ borderRadius: '10px', maxHeight: '300px' }}
             image={placeDetail.photos?.[0]?.getUrl()}
           />
           <CardContent>
+            {placeDetail.types && <TypesList types={placeDetail.types} />}
             <TitleCard gutterBottom variant="h5">
               {placeDetail.name}
             </TitleCard>
@@ -120,7 +123,7 @@ const DetailPlace = () => {
             <Button
               size="small"
               variant="outlined"
-              startIcon={<FavoriteIcon fill={isFavorite ? '#808080' : '#FFFFFF'}/>}
+              startIcon={<FavoriteIcon fill={isFavorite ? '#808080' : '#FFFFFF'} />}
               onClick={handleClick}
             >
               {isFavorite ? 'Сохранено' : 'Сохранить'}

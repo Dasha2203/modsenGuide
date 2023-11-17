@@ -11,6 +11,7 @@ export const Card = styled(MuiCard)(() => ({
 }))
 
 export const CardHeader = styled(Box)(() => ({
+  marginBottom: '20px',
   display: 'flex',
   alignItems: 'center',
   gap: '20px'

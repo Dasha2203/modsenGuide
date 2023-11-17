@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
 import ControlButtons from 'components/ControlButtons'
 import InfoPanel from 'components/InfoPanel'
+import { placesTypes } from 'const'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import locationImg from 'icons/location.svg'
 import { useCallback, useEffect } from 'react'
@@ -54,7 +55,7 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
         ]}
         />
       )}
-      <ControlButtons/>
+      <ControlButtons />
       {isLoaded && userLocation ? (
         <GoogleMap
           center={userLocation}
@@ -82,17 +83,18 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
               }}
             />
           )}
-          {places.filter(place => !!place.geometry?.location).map(place => {
+          {places.filter(place => !!place.geometry?.location).map(({ place_id, geometry, types }) => {
             return (
               <Marker
-                key={place.place_id}
-                position={place.geometry?.location!}
-                onClick={() => navigate(`/place/${place.place_id}`)}
+                key={place_id}
+                position={geometry?.location!}
+                icon={{ url: placesTypes.find(({ type }) => types?.find(item => item === type))?.src!, scaledSize: new google.maps.Size(30, 30) }}
+                onClick={() => navigate(`/place/${place_id}`)}
               />
             )
 
           })}
-          <Marker position={userLocation} icon={{url: locationImg}}/>
+          <Marker position={userLocation} icon={{ url: locationImg }} />
           <Circle
             center={userLocation}
             radius={radius}
