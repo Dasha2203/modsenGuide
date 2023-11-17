@@ -6,7 +6,8 @@ export enum PlacesTypes {
   MealTakeAway = 'meal_takeaway',
   PointOfInterest = 'point_of_interest',
   Cafe = 'cafe',
-  Sport = 'gym'
+  Sport = 'gym',
+  Bank = 'bank'
 }
 
 export interface IPlace {

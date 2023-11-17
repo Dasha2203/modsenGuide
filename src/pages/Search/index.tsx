@@ -19,7 +19,7 @@ const Search = () => {
   const [query, setQuery] = useState('')
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (!e.target.value.match(/^\d+$/)) return
+    if (e.target.value && !e.target.value.match(/^\d+$/)) return
 
     setInputRadius(+e.target.value)
   }
