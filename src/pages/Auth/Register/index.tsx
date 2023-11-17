@@ -4,10 +4,12 @@ import Input from 'components/Input'
 import Link from 'components/Link';
 import { createUserWithEmailAndPassword,getAuth } from 'firebase/auth'
 import { addDoc,collection } from 'firebase/firestore'
-import { useAppDispatch } from 'hooks/redux-hooks';
+import { useAppDispatch } from 'hooks/redux-hooks'
 import { Controller,SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { setUser } from 'store/slices/user/userSlice';
+import { setUser } from 'store/slices/user/userSlice'
+import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles';
+import { Page } from 'ui/Page'
 
 import { db } from './../../../firebase'
 
@@ -66,24 +68,10 @@ export const Register = () => {
   }
 
   return (
-    <Box
-      sx={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
+    <Page>
       <Container>
-        <Box sx={{ maxWidth: '500px', margin: '0 auto' }}>
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-            }}
-          >
-            Регистрация
-          </Typography>
+        <FormContainer>
+          <FormTitle>Регистрация</FormTitle>
           <form onSubmit={(handleSubmit(submit))}>
             <Controller
               name="name"
@@ -166,15 +154,15 @@ export const Register = () => {
               Зарегистрироваться
             </Button>
           </form>
-          <Box sx={{display: 'flex', justifyContent: 'center', mt: '10px', gap: '5px'}}>
+          <FormLink>
             <Typography>
               Вы уже зарегистрированы?
             </Typography>
             <Link to={"/login"}>Войти</Link>
-          </Box>
-        </Box>
+          </FormLink>
+        </FormContainer>
       </Container>
-    </Box>
+    </Page>
   )
 }
 
