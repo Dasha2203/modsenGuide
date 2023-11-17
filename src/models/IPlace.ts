@@ -7,7 +7,9 @@ export enum PlacesTypes {
   PointOfInterest = 'point_of_interest',
   Cafe = 'cafe',
   Sport = 'gym',
-  Bank = 'bank'
+  Bank = 'bank',
+  Store = 'supermarket',
+  Park = 'park',
 }
 
 export interface IPlace {
