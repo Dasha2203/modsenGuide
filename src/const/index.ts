@@ -1,8 +1,8 @@
-import bankIcon from 'icons/places/bank.svg'
-import coffeIcon from 'icons/places/coffee.svg'
-import parkIcon from 'icons/places/nature.svg'
-import sportIcon from 'icons/places/sport.svg'
-import storeIcon from 'icons/places/store.svg'
+import bankIcon from 'assets/icons/places/bank.svg'
+import coffeIcon from 'assets/icons/places/coffee.svg'
+import parkIcon from 'assets/icons/places/nature.svg'
+import sportIcon from 'assets/icons/places/sport.svg'
+import storeIcon from 'assets/icons/places/store.svg'
 import { PlacesTypes } from 'models/IPlace'
 import { PlaceTypeItem } from 'types/placeTypeItem'
 

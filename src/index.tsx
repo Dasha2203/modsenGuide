@@ -5,9 +5,9 @@ import { BrowserRouter } from 'react-router-dom'
 import { store } from 'store'
 
 import './firebase'
-import './fonts/Mont/Mont-Regular.woff'
-import './fonts/Mont/Mont-SemiBold.woff'
-import './fonts/Mont/Mont-Bold.woff'
+import './assets/fonts/Mont/Mont-Regular.woff'
+import './assets/fonts/Mont/Mont-SemiBold.woff'
+import './assets/fonts/Mont/Mont-Bold.woff'
 
 import App from './App'
 

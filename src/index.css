@@ -1,19 +1,19 @@
 @font-face {
   font-family: "Mont";
   src: local("Mont-Regular"),
-   url("./fonts/Mont/Mont-Regular.woff") format("woff");
+   url("./assets/fonts/Mont/Mont-Regular.woff") format("woff");
   font-weight: 400;
  }
 @font-face {
   font-family: "Mont";
   src: local("Mont-SemiBold"),
-   url("./fonts/Mont/Mont-SemiBold.woff") format("woff");
+   url("./assets/fonts/Mont/Mont-SemiBold.woff") format("woff");
   font-weight: 600;
  }
 @font-face {
   font-family: "Mont";
   src: local("Mont-Bold"),
-   url("./fonts/Mont/Mont-Bold.woff") format("woff");
+   url("./assets/fonts/Mont/Mont-Bold.woff") format("woff");
   font-weight: 700;
  }
 
