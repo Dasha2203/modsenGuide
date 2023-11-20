@@ -31,16 +31,10 @@ export const fetchPlaces = ({
         radius,
         query,
         type: types[i],
-        fields: [
-          'name',
-          'place_id',
-          'geometry',
-          'types',
-        ],
       }
 
       let job: Promise<google.maps.places.PlaceResult[]> = new Promise(function (resolve, reject) {
-        service.nearbySearch(request, (results: TPlacesResult[] | null, status) => {
+        service.textSearch(request, (results: TPlacesResult[] | null, status) => {
           resolve(results || [])
         });
       });
