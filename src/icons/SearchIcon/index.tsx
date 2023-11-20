@@ -5,6 +5,7 @@ const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      width={'100%'}
       viewBox="0 0 22 22"
       className="search-icon"
       {...props}

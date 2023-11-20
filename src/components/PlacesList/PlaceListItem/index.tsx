@@ -1,4 +1,6 @@
-import { Item, ItemText } from './style'
+import { Grid } from '@mui/material'
+
+import { ItemImg, ItemText,Row } from './style'
 
 type TItem = {
   id: string | number
@@ -14,10 +16,14 @@ type ItemProps = {
 const PlaceListItem = ({ item, isActive }: ItemProps) => {
   const { id, src, text } = item
   return (
-    <Item key={id} active={isActive}>
-      <img src={src} />
+    <Row container key={id} active={isActive}>
+      <ItemImg item>
+        <img src={src} alt={item.text}/>
+      </ItemImg>
+      <Grid item>
       <ItemText>{text}</ItemText>
-    </Item>
+      </Grid>
+    </Row>
   )
 }
 

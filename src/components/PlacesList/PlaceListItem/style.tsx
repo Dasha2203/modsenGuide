@@ -1,6 +1,11 @@
-import { Box, styled, Typography } from '@mui/material'
+import { Grid, styled, Typography } from '@mui/material'
 
-export const Item = styled(Box,
+export const ItemImg = styled(Grid)(({theme}) => ({
+  width: '30px',
+  height: '30px'
+}))
+
+export const Row = styled(Grid,
   { shouldForwardProp: (prop) => prop !== "lowerCase" && prop !== "active" }
 )<{ active?: boolean }>(({ theme, active }) => ({
   display: 'grid',
