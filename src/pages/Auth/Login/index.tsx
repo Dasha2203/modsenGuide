@@ -1,14 +1,15 @@
-import { Button, Container, Typography } from '@mui/material'
-import Input from 'components/Input'
-import Link from 'components/Link'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useAppDispatch } from 'hooks/redux-hooks'
 import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { Button, Container, Typography } from '@mui/material'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useAppDispatch } from 'hooks/redux-hooks'
 import { setUser } from "store/slices/user/userSlice"
 import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles';
 import { Page } from 'ui/Page';
+
+import Input from 'components/Input'
+import Link from 'components/Link'
 
 type LoginForm = {
   email: string

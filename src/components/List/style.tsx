@@ -11,7 +11,9 @@ export const StyledList = styled(List)(({ theme }) => ({
 }),
 );
 
-export const StyledListButton = styled(ListItemButton)(() => ({
+export const StyledListButton = styled(ListItemButton)(({ theme }) => ({
   padding: '10px 20px',
-  // opacity: props.active ? '1' : '0.5'
+  '@media (max-width: 600px)': {
+    padding: '5px 10px',
+  },
 }))

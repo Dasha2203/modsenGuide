@@ -34,6 +34,8 @@ export const Button = styled(MuiButton)(({ theme }) => ({
 );
 
 export const AvatarButton = styled(MuiButton)(({ theme }) => ({
+  marginTop: 'auto',
+  padding: 0,
   width: '54px',
   height: '54px',
   minWidth: 'auto',
@@ -41,8 +43,6 @@ export const AvatarButton = styled(MuiButton)(({ theme }) => ({
   borderColor: '#C4C4C4',
   borderStyle: 'solid',
   borderRadius: '50%',
-  padding: 0,
-  marginTop: 'auto',
 
   [theme.breakpoints.down('lg')]: {
     width: '30px',
@@ -61,7 +61,18 @@ export const WrapNavbar = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: '15px',
 
+  '& .logout': {
+    marginTop: 'auto'
+  },
+
   [theme.breakpoints.down('lg')]: {
+    '& .logout': {
+      marginTop: 0,
+      order: 2,
+    },
+  },
+
+  [theme.breakpoints.down('md')]: {
     padding: '30px 15px 15px',
     backgroundColor: '#EFF2F8'
   }

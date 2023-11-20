@@ -1,30 +1,38 @@
-import { Box, CardContent, CardMedia } from '@mui/material'
-import Button from 'components/Button'
-import SectionLink from 'components/SectionLink'
-import TypesList from 'components/TypesList'
-import { placesTypes } from 'const'
+import { useEffect, useState } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { CardMedia } from '@mui/material'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
+import useAuth from 'hooks/use-auth'
+import { useDeviceType } from 'hooks/useDeviceType'
 import DirectionIcon from 'icons/DirectionIcon'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import LeftArrowIcon from 'icons/LeftArrowIcon'
-import { useEffect, useState } from 'react'
-import { useLocation, useParams } from 'react-router-dom'
+import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { fetchDirection, fetchPlace } from 'store/slices/places/actionCreators'
 import { fetchDetailPageSuccess, setDirection } from 'store/slices/places/placesSlice'
 import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/actionCreators'
 import { TFavoritePlace } from 'types'
 
-import { Card, CardActions, TextCard, TitleCard, Wrap } from './style'
+import Button from 'components/Button'
+import SectionLink from 'components/SectionLink'
+import TypesList from 'components/TypesList'
+
+import { Card, CardActions, CardContent, TextCard, TitleCard, Wrap } from './style'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)
+  const isMobile = useDeviceType(600)
   const location = useLocation()
   const dispatch = useAppDispatch()
+  const { isAuth } = useAuth()
   const { places, map, placeDetail } = useAppSelector(state => state.placesReducer)
-  const { favoritePlaces, user, userLocation } = useAppSelector(state => state.userReducer)
+  const { favoritePlaces, user, userLocation, } = useAppSelector(state => state.userReducer)
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
 
   useEffect(() => {
+    dispatch(setOpenSearchBar(false))
+
     return () => {
       dispatch(setDirection(null))
     }
@@ -57,6 +65,7 @@ const DetailPlace = () => {
   }, [placeDetail, favoritePlaces])
 
   function handleClick() {
+    if (!isAuth) navigate('/login')
     if (!id || !placeDetail || !user.id) return
 
     if (isFavorite) {
@@ -89,6 +98,9 @@ const DetailPlace = () => {
     }
 
     dispatch(fetchDirection(userLocation, placeLocation))
+    if (isMobile) {
+      dispatch(setOpenSearchBar(false))
+    }
   }
 
   return (
@@ -123,7 +135,7 @@ const DetailPlace = () => {
             <Button
               size="small"
               variant="outlined"
-              startIcon={<FavoriteIcon fill={isFavorite ? '#808080' : '#FFFFFF'} />}
+              startIcon={<FavoriteIcon fill={isFavorite ? '#808080' : '#C75E5E'} />}
               onClick={handleClick}
             >
               {isFavorite ? 'Сохранено' : 'Сохранить'}

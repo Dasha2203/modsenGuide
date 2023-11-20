@@ -9,8 +9,9 @@ const theme = createTheme({
       main: '#5E7BC7',
     },
     secondary: {
-      main: '#C75E5E'
-    }
+      main: '#C75E5E',
+      dark: '#808080'
+    },
   },
   components: {
     MuiButton: {

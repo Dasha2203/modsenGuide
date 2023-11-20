@@ -4,6 +4,7 @@ import { AppDispatch } from 'store'
 import { TFavoritePlace } from 'types'
 
 import { db } from '../../../firebase'
+
 import { pushFavoritesPlace, removeFavoritesPlace, removeUser,setFavoritesPlaces } from './userSlice'
 
 const favoritesCollection = 'favoretesPlaces'

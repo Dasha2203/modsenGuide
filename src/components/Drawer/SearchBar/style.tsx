@@ -1,11 +1,14 @@
-import styled from '@emotion/styled/macro'
+
+import styled from "@emotion/styled/macro"
 import { Box } from '@mui/material'
+import Search from 'icons/SearchIcon'
+
 import { StyledAutoComplete } from 'components/AutoComplete/style'
 import { StyledInput } from 'components/Input/style'
 import { StyledList } from 'components/List/style'
-import Search from 'icons/SearchIcon'
 
 export const WrapSearchBar = styled(Box)`
+
   padding: 25px 25px 0;
   display: flex;
   flex-direction: column;
@@ -26,6 +29,11 @@ export const WrapSearchBar = styled(Box)`
   ${StyledList} {
     margin-bottom: 30px;
   }
+
+  @media (max-width: 599px) {
+    padding: 15px 10px;
+  }
+
 `
 
 export const SearchIcon = styled(Search)(({ theme }) => ({

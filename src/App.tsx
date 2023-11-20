@@ -1,16 +1,16 @@
-import './App.css'
-
+import { Route,Routes } from 'react-router-dom'
 import { ThemeProvider } from '@emotion/react'
 import DetailPlace from 'pages/DetailPlace'
 import Favorites from 'pages/Favorites'
 import Search from 'pages/Search'
-import { Route,Routes } from 'react-router-dom'
 
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import Layout from './pages/Layout'
 import NotFound from './pages/NotFound'
 import theme from './theme'
+
+import './App.css'
 
 const App = () => {
   return (

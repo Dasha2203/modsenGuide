@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
+import { styled } from '@mui/material'
 import { Box } from '@mui/material'
 
-export const Wrap = styled(Box)(() => ({
+export const Wrap = styled(Box)(({ theme }) => ({
   display: 'flex',
   gap: '5px',
 
@@ -9,5 +9,12 @@ export const Wrap = styled(Box)(() => ({
     width: '30px',
     height: '30x',
     borderRadius: '50%'
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    '& img': {
+      width: '20px',
+      height: '20x',
+    },
   }
 }))

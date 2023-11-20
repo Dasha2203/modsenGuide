@@ -1,15 +1,15 @@
 import { Box } from '@mui/material'
-import { useState } from 'react'
+import { useAppSelector } from 'hooks/redux-hooks'
 
-import Navbar from './Navbar';
+import Navbar from './Navbar'
 import SearchBar from './SearchBar'
-import { StyledDrawer } from './style';
+import { StyledDrawer } from './style'
 
 export const Drawer = ({ isLoaded }: { isLoaded: boolean }) => {
-  const [open, setOpen] = useState(false)
+  const { openSearchBar } = useAppSelector(state => state.appReducer)
 
   return (
-    <StyledDrawer variant="permanent" open={true}>
+    <StyledDrawer variant="permanent" open={openSearchBar}>
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'stretch', height: '100%' }}>
         <Navbar />
         {isLoaded && <SearchBar />}

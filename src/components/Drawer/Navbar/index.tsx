@@ -1,19 +1,22 @@
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Avatar, Menu, MenuItem } from '@mui/material'
-import IconButton from 'components/IconButton'
-import Link from 'components/Link'
-import { useAppDispatch } from 'hooks/redux-hooks'
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import useAuth from 'hooks/use-auth'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import LoginIcon from 'icons/LoginIcon'
 import SearchIcon from 'icons/SearchIcon'
-import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { logout } from 'store/slices/user/actionCreators'
+
+import IconButton from 'components/IconButton'
+import Link from 'components/Link'
 
 import { AvatarButton, ButtonGroup, Logo, WrapNavbar } from './style'
 
 const Navbar = () => {
-  const { isAuth, email } = useAuth()
+  const { isAuth } = useAuth()
+  const { openSearchBar } = useAppSelector(state => state.appReducer)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { pathname } = useLocation()
@@ -22,32 +25,42 @@ const Navbar = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
-    dispatch(logout())
-
   }
 
   const handleClose = () => {
     setAnchorEl(null)
   }
 
+  const handleLogout = () => {
+    dispatch(logout())
+    handleClose()
+  }
+
+  const handleSearch = () => {
+    navigate('/')
+    dispatch(setOpenSearchBar(!openSearchBar))
+  }
+
   return (
     <WrapNavbar>
-      <Logo />
+      <Logo onClick={() => dispatch(setOpenSearchBar(!openSearchBar))} />
       <ButtonGroup>
         <IconButton
-          onClick={() => navigate('/')}
+          onClick={handleSearch}
           active={pathname === '/'}
           color="primary"
         >
           <SearchIcon />
         </IconButton>
-        <IconButton
-          onClick={() => navigate('/favorites')}
-          active={pathname === '/favorites'}
-          color="secondary"
-        >
-          <FavoriteIcon />
-        </IconButton>
+        {isAuth && (
+          <IconButton
+            onClick={() => navigate('/favorites')}
+            active={pathname === '/favorites'}
+            color="secondary"
+          >
+            <FavoriteIcon />
+          </IconButton>
+        )}
       </ButtonGroup>
 
       {isAuth ? (
@@ -55,8 +68,10 @@ const Navbar = () => {
           <Avatar />
         </AvatarButton>
       ) : (
-        <Link to="/login" sx={{mt: 'auto'}}>
-          <LoginIcon width={60}/>
+        <Link to="/login" className="logout">
+          <IconButton color="secondary" typeColor="dark">
+            <LoginIcon />
+          </IconButton>
         </Link>
       )}
       <Menu
@@ -74,7 +89,7 @@ const Navbar = () => {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
     </WrapNavbar>
   )

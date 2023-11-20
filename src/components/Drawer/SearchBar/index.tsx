@@ -6,7 +6,6 @@ const SearchBar = () => {
 
   return (
     <WrapSearchBar>
-      {/* <AutoComplete radius={radius} types={chackedPlaces.map(item => item.type)}/> */}
       <Outlet />
     </WrapSearchBar>
   )

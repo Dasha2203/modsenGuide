@@ -1,13 +1,15 @@
+import { useState } from 'react'
 import { Button } from '@mui/material'
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
+import { setOpenSearchBar } from 'store/slices/app/appSlice'
+import { fetchPlaces } from 'store/slices/places/actionCreators'
+import { setRadius } from 'store/slices/places/placesSlice'
+
 import { SearchIcon } from 'components/Drawer/SearchBar/style'
 import Input from 'components/Input'
 import { InputContainer, InputUnit } from 'components/Input/style'
 import Label from 'components/Label'
 import PlacesList from 'components/PlacesList'
-import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
-import { useState } from 'react'
-import { fetchPlaces } from 'store/slices/places/actionCreators'
-import { setRadius } from 'store/slices/places/placesSlice'
 
 import { Wrap } from './style'
 
@@ -15,6 +17,7 @@ const Search = () => {
   const dispatch = useAppDispatch()
   const { userLocation } = useAppSelector(state => state.userReducer)
   const { map, checkedTypesPlaces, radius } = useAppSelector(state => state.placesReducer)
+  const { openSearchBar } = useAppSelector(state => state.appReducer)
   const [inputRadius, setInputRadius] = useState(radius / 1000)
   const [query, setQuery] = useState('')
 
@@ -39,6 +42,7 @@ const Search = () => {
       map,
       query
     }))
+    dispatch(setOpenSearchBar(!openSearchBar))
   }
 
   return (

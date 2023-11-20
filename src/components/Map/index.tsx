@@ -1,19 +1,23 @@
-import { Box } from '@mui/material'
+import { useCallback, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
-import ControlButtons from 'components/ControlButtons'
-import InfoPanel from 'components/InfoPanel'
 import { placesTypes } from 'const'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import locationImg from 'icons/location.svg'
-import { useCallback, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { setMap } from 'store/slices/places/placesSlice'
 import { setUserLocation } from 'store/slices/user/userSlice'
+
+import ControlButtons from 'components/ControlButtons'
+import InfoPanel from 'components/InfoPanel'
+
+import { MapContainer } from './styles'
 
 const Map = ({ isLoaded }: { isLoaded: boolean }) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { places, direction, zoom, radius } = useAppSelector((state) => state.placesReducer)
+  const { openSearchBar } = useAppSelector((state) => state.appReducer)
   const { userLocation } = useAppSelector((state) => state.userReducer)
 
   useEffect(() => {
@@ -45,9 +49,13 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
       console.log('Нет доступа к геолокации')
     }
   }
+  function handleMarkerClick(id: string) {
+    dispatch(setOpenSearchBar(true))
+    navigate(`/place/${id}`)
+  }
 
   return (
-    <Box sx={{ width: 'calc(100% - 600px)', ml: 'auto', height: '100vh', background: 'green', position: 'relative' }}>
+    <MapContainer open={openSearchBar}>
       {direction && (
         <InfoPanel items={[
           { label: 'Дистанция', value: direction.routes[0].legs[0].distance?.text },
@@ -69,7 +77,8 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
-            fullscreenControl: false
+            fullscreenControl: false,
+            mapId: "c8ee2cd9c357dc67"
           }}
         >
           {direction && (
@@ -89,12 +98,12 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
                 key={place_id}
                 position={geometry?.location!}
                 icon={{ url: placesTypes.find(({ type }) => types?.find(item => item === type))?.src!, scaledSize: new google.maps.Size(30, 30) }}
-                onClick={() => navigate(`/place/${place_id}`)}
+                onClick={() => handleMarkerClick(place_id!)}
               />
             )
 
           })}
-          <Marker position={userLocation} icon={{ url: locationImg }} />
+          <Marker position={userLocation} icon={{ url: locationImg}}/>
           <Circle
             center={userLocation}
             radius={radius}
@@ -107,8 +116,9 @@ const Map = ({ isLoaded }: { isLoaded: boolean }) => {
           />
         </GoogleMap>
       ) : null}
-    </Box >
+    </MapContainer>
   )
 }
 
 export default Map
+

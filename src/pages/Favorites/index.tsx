@@ -1,8 +1,9 @@
-import Link from 'components/Link'
-import SmallCard from 'components/SmallCard'
 import { useAppSelector } from 'hooks/redux-hooks'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import RightArrowIcon from 'icons/RightArrowIcon'
+
+import Link from 'components/Link'
+import SmallCard from 'components/SmallCard'
 
 import { Wrap } from './style'
 

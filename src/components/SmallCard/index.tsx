@@ -1,4 +1,5 @@
 import { Box } from '@mui/material'
+
 import TypesList from 'components/TypesList'
 
 import { Card, CardFooter, CardHeader, CardImage, CardText, CardTitle } from './style'

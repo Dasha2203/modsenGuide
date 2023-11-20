@@ -1,15 +1,17 @@
 import MuiDrawer from '@mui/material/Drawer'
 import { CSSObject,styled, Theme } from '@mui/material/styles'
 
-const drawerWidth = 600
-
 export const openedMixin = (theme: Theme): CSSObject => ({
-  width: drawerWidth,
+  width: '600px',
+  whiteSpace: 'normal',
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: 'hidden',
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  },
 });
 
 export const closedMixin = (theme: Theme): CSSObject => ({
@@ -18,15 +20,18 @@ export const closedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: 'hidden',
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+  width: '110px',
+  [theme.breakpoints.down('md')]: {
+    width: `70px`,
+  },
+  [theme.breakpoints.down('sm')]: {
+    right: 0,
   },
 });
 
 export const StyledDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    maxWidth: drawerWidth,
+    maxWidth: '600px',
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
@@ -38,5 +43,9 @@ export const StyledDrawer = styled(MuiDrawer, { shouldForwardProp: (prop) => pro
       ...closedMixin(theme),
       '& .MuiDrawer-paper': closedMixin(theme),
     }),
+    [theme.breakpoints.down('md')]: {
+      width: '350px',
+    },
+
   }),
 );
