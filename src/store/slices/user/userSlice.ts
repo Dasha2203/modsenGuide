@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { TFavoritePlace } from 'types/favoritePlace'
+import { TFavoritePlace } from '@typesApp/favoritePlace'
 
 import { TUserState } from './types'
 

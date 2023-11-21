@@ -1,7 +1,6 @@
-import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
-import { checkTypePlaces } from 'store/slices/places/placesSlice'
-
-import List from 'components/List'
+import List from '@components/List'
+import { useAppDispatch, useAppSelector } from '@hooks/redux-hooks'
+import { checkTypePlaces } from '@store/slices/places/placesSlice'
 
 import PlaceListItem from './PlaceListItem'
 

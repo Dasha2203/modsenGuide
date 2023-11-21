@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react';
+import { PlacesTypesEnum } from '@consts';
 import { Avatar, InputAdornment, TextField } from '@mui/material'
-import { PlacesTypesEnum } from 'consts';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 
 import { AutoCompleteInput, StyledAutoComplete } from './styles'

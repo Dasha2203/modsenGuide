@@ -1,9 +1,9 @@
-import bankIcon from 'assets/icons/places/bank.svg'
-import coffeIcon from 'assets/icons/places/coffee.svg'
-import parkIcon from 'assets/icons/places/nature.svg'
-import sportIcon from 'assets/icons/places/sport.svg'
-import storeIcon from 'assets/icons/places/store.svg'
-import { PlaceTypeItem } from 'types/placeTypeItem'
+import bankIcon from '@assets/icons/places/bank.svg'
+import coffeIcon from '@assets/icons/places/coffee.svg'
+import parkIcon from '@assets/icons/places/nature.svg'
+import sportIcon from '@assets/icons/places/sport.svg'
+import storeIcon from '@assets/icons/places/store.svg'
+import { PlaceTypeItem } from '@typesApp/placeTypeItem'
 
 export enum PlacesTypesEnum {
   Restaurant = 'restaurant',

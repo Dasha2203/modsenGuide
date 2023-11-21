@@ -1,9 +1,9 @@
+
+import { db } from '@firebaseApp'
+import { TFavoritePlace } from '@typesApp/favoritePlace'
 import { getAuth, signOut } from 'firebase/auth'
 import { addDoc, collection, getDocs, query, where, writeBatch } from 'firebase/firestore'
 import { AppDispatch } from 'store'
-import { TFavoritePlace } from 'types/favoritePlace'
-
-import { db } from '../../../firebase'
 
 import { pushFavoritesPlace, removeFavoritesPlace, removeUser,setFavoritesPlaces } from './userSlice'
 

@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@ui/*": [
+        "./ui/*"
+      ],
+      "@icons/*": [
+        "./icons/*"
+      ],
+      "@consts": [
+        "./consts"
+      ],
+      "@store/*": [
+        "./store/*"
+      ],
+      "@firebaseApp": [
+        "./firebaseApp"
+      ],
+      "@typesApp/*": [
+        "./types/*"
+      ]
+    }
+  }
+}

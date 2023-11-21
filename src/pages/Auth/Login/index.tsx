@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { RegexEmail, RegexPassword, RoutesEnum } from '@consts'
+import { useAppDispatch } from '@hooks/redux-hooks'
 import { Button, Container, Typography } from '@mui/material'
-import { RegexEmail, RegexPassword, RoutesEnum } from 'consts'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
-import { useAppDispatch } from 'hooks/redux-hooks'
-import { setUser } from "store/slices/user/userSlice"
-import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles'
-import Input from 'ui/Input'
-import Link from 'ui/Link'
-import { Page } from 'ui/Page';
+import { setUser } from '@store/slices/user/userSlice'
+import { FormContainer, FormLink, FormTitle } from '@ui/Form/styles'
+import Input from '@ui/Input'
+import Link from '@ui/Link'
+import { Page } from '@ui/Page'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
 type LoginForm = {
   email: string

@@ -1,8 +1,8 @@
+import { placesTypes } from '@consts'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { placesTypes } from 'consts'
-import { TDetailPlaceResult } from 'types/detailPlace'
-import { DirectionsResult, TMap, TPlacesResult } from 'types/mapTypes'
-import { PlaceTypeItem } from 'types/placeTypeItem'
+import { TDetailPlaceResult } from '@typesApp/detailPlace'
+import { DirectionsResult, TMap, TPlacesResult } from '@typesApp/mapTypes'
+import { PlaceTypeItem } from '@typesApp/placeTypeItem'
 
 import { TPlaceState } from './types'
 

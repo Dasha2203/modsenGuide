@@ -1,11 +1,10 @@
 
+import { StyledAutoComplete } from '@components/AutoComplete/styles'
+import { StyledList } from '@components/List/styles'
 import styled from "@emotion/styled/macro"
+import Search from '@icons/SearchIcon'
 import { Box } from '@mui/material'
-import Search from 'icons/SearchIcon'
-import { StyledInput } from 'ui/Input/styles'
-
-import { StyledAutoComplete } from 'components/AutoComplete/styles'
-import { StyledList } from 'components/List/styles'
+import { StyledInput } from '@ui/Input/styles'
 
 export const WrapSearchBar = styled(Box)`
 

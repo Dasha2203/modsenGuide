@@ -1,6 +1,6 @@
-import { TDetailPlaceResult } from 'types/detailPlace'
-import { DirectionsResult, TPlacesResult } from 'types/mapTypes'
-import { PlaceTypeItem } from 'types/placeTypeItem'
+import { TDetailPlaceResult } from '@typesApp/detailPlace'
+import { DirectionsResult, TPlacesResult } from '@typesApp/mapTypes'
+import { PlaceTypeItem } from '@typesApp/placeTypeItem'
 
 export type TPlaceState = {
   checkedTypesPlaces: PlaceTypeItem[],

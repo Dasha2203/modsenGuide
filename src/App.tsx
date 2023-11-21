@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
+import { RoutesEnum } from '@consts'
 import { ThemeProvider } from '@emotion/react'
-import { RoutesEnum } from 'consts'
-import DetailPlace from 'pages/DetailPlace'
-import Favorites from 'pages/Favorites'
-import Search from 'pages/Search'
+import DetailPlace from '@pages/DetailPlace'
+import Favorites from '@pages/Favorites'
+import Search from '@pages/Search'
 
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'

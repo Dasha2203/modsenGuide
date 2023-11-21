@@ -1,5 +1,5 @@
+import { LatLngLiteral, TMap, TPlacesResult } from '@typesApp/mapTypes'
 import { AppDispatch } from 'store'
-import { LatLngLiteral, TMap, TPlacesResult } from 'types/mapTypes'
 
 import { fetchDetailPageSuccess, placesFetching, placesFetchingError, placesFetchingSuccess, setDirection } from './placesSlice'
 

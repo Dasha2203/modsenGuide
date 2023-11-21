@@ -1,4 +1,4 @@
-import { placesTypes } from 'consts'
+import { placesTypes } from '@consts'
 
 import { Wrap } from './styles'
 import { TTypeListProps } from './types'

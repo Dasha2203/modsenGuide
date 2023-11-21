@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
+import Drawer from '@components/Drawer'
+import Map from '@components/Map'
+import { auth } from '@firebaseApp'
+import { useAppDispatch } from '@hooks/redux-hooks'
+import useAuth from '@hooks/use-auth'
 import { useJsApiLoader } from '@react-google-maps/api'
-import { useAppDispatch } from 'hooks/redux-hooks'
-import useAuth from 'hooks/use-auth'
-import { getFavoritesPlaces } from 'store/slices/user/actionCreators'
-import { removeUser, setUser } from 'store/slices/user/userSlice'
-
-import Drawer from 'components/Drawer'
-import Map from 'components/Map'
-
-import { auth } from '../../firebase'
+import { getFavoritesPlaces } from '@store/slices/user/actionCreators'
+import { removeUser, setUser } from '@store/slices/user/userSlice'
 
 import { StyledBox } from './styles'
 

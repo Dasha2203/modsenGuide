@@ -1,5 +1,5 @@
+import { useAppSelector } from '@hooks/redux-hooks'
 import { Box } from '@mui/material'
-import { useAppSelector } from 'hooks/redux-hooks'
 
 import Navbar from './Navbar'
 import SearchBar from './SearchBar'

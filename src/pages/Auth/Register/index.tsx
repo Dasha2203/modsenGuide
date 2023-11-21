@@ -1,18 +1,17 @@
 import { Controller,SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { RegexEmail, RegexPassword, RoutesEnum } from '@consts'
+import { db } from '@firebaseApp'
+import { useAppDispatch } from '@hooks/redux-hooks'
 import { Button, Typography } from '@mui/material'
 import Container from '@mui/material/Container'
-import { RegexEmail, RegexPassword, RoutesEnum } from 'consts'
+import { setUser } from '@store/slices/user/userSlice'
+import { FormContainer, FormLink, FormTitle } from '@ui/Form/styles';
+import Input from '@ui/Input'
+import Link from '@ui/Link';
+import { Page } from '@ui/Page'
 import { createUserWithEmailAndPassword,getAuth } from 'firebase/auth'
-import { addDoc,collection } from 'firebase/firestore'
-import { useAppDispatch } from 'hooks/redux-hooks'
-import { setUser } from 'store/slices/user/userSlice'
-import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles';
-import Input from 'ui/Input'
-import Link from 'ui/Link';
-import { Page } from 'ui/Page'
-
-import { db } from './../../../firebase'
+import { addDoc, collection } from 'firebase/firestore'
 
 type RegisterForm = {
   name: string

@@ -2,14 +2,14 @@
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import { store } from 'store'
 
-import './firebase'
+import './firebaseApp'
 import './assets/fonts/Mont/Mont-Regular.woff'
 import './assets/fonts/Mont/Mont-SemiBold.woff'
 import './assets/fonts/Mont/Mont-Bold.woff'
 
 import App from './App'
+import { store } from './store'
 
 import './index.css'
 
