@@ -13,9 +13,8 @@ const Favorites = () => {
   return (
     <Wrap>
       {favoritePlaces.map(({ placeId, name, photo, formatted_address, types }) => (
-        <Link sx={{ textDecoration: 'none' }} to={`/place/${placeId}`} state={{ prev: RoutesEnum.favorites }}>
+        <Link key={placeId} sx={{ textDecoration: 'none' }} to={`/place/${placeId}`} state={{ prev: RoutesEnum.favorites }}>
           <SmallCard
-            key={placeId}
             title={name || ''}
             img={photo}
             types={types}

@@ -1,5 +1,3 @@
-
-import { StyledAutoComplete } from '@components/AutoComplete/styles'
 import { StyledList } from '@components/List/styles'
 import styled from "@emotion/styled/macro"
 import Search from '@icons/SearchIcon'
@@ -17,12 +15,9 @@ export const WrapSearchBar = styled(Box)`
   border-left-color: #C4C4C4;
   border-left-style: solid;
 
-  ${StyledAutoComplete} {
-    margin-bottom: 35px;
-  }
-
   ${StyledInput} {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 30px;
   }
 
   ${StyledList} {
