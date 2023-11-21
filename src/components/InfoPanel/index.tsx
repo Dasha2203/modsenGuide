@@ -1,15 +1,7 @@
 import { Label, Property, Row, StyledBox, Value } from './style'
+import { TInfoPanelProps } from './types'
 
-type TItems = {
-  label: string
-  value?: string
-}
-
-type Props = {
-  items: TItems[]
-}
-
-const InfoPanel = ({ items }: Props) => {
+const InfoPanel = ({ items }: TInfoPanelProps) => {
 
   return (
     <StyledBox>

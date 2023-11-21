@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface AppState {
-  openSearchBar: boolean
-}
+import { TAppState } from './types'
 
-const initialState: AppState = {
+const initialState: TAppState = {
   openSearchBar: false
 }
 

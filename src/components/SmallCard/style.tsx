@@ -40,7 +40,7 @@ export const CardFooter = styled(Box)(({ theme }) => ({
   }
 }))
 
-export const CardImage = styled(CardMedia)(({ theme }) => ({
+export const CardImage = styled(CardMedia)(() => ({
   borderRadius: '10px',
   maxWidth: '120px',
   height: '90px',

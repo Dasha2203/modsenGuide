@@ -1,13 +1,7 @@
-import { IconButtonProps, SimplePaletteColorOptions } from '@mui/material'
-
 import { StyledIconButton } from './style'
+import { TIconButtonProps } from './types'
 
-type Props = IconButtonProps & {
-  active?: boolean
-  typeColor?: 'dark' | 'light' | 'main'
-}
-
-const IconButton = ({ children, active, typeColor, ...props }: Props) => {
+const IconButton = ({ children, active, typeColor, ...props }: TIconButtonProps) => {
   return (
     <StyledIconButton active={active} typeColor={typeColor} {...props}>
       {children}

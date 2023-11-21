@@ -12,8 +12,9 @@ import ControlButtons from 'components/ControlButtons'
 import InfoPanel from 'components/InfoPanel'
 
 import { MapContainer } from './styles'
+import { TMapProps } from './types'
 
-const Map = ({ isLoaded }: { isLoaded: boolean }) => {
+const Map = ({ isLoaded }: TMapProps) => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { places, direction, zoom, radius } = useAppSelector((state) => state.placesReducer)

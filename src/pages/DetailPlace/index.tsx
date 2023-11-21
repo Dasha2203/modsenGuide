@@ -12,7 +12,7 @@ import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { fetchDirection, fetchPlace } from 'store/slices/places/actionCreators'
 import { fetchDetailPageSuccess, setDirection } from 'store/slices/places/placesSlice'
 import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/actionCreators'
-import { TFavoritePlace } from 'types'
+import { TFavoritePlace } from 'types/favoritePlace'
 
 import Button from 'components/Button'
 import SectionLink from 'components/SectionLink'

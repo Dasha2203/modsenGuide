@@ -1,7 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth'
 import { addDoc, collection, getDocs, query, where, writeBatch } from 'firebase/firestore'
 import { AppDispatch } from 'store'
-import { TFavoritePlace } from 'types'
+import { TFavoritePlace } from 'types/favoritePlace'
 
 import { db } from '../../../firebase'
 
@@ -14,7 +14,7 @@ export const getFavoritesPlaces = ({ id }: { id: string }) => async (dispatch: A
     const placesRef = collection(db, favoritesCollection)
     const placesQuery = query(placesRef, where("userId", "==", id));
     const placesDocs = await getDocs(placesQuery)
-    let places = placesDocs.docs.map(x => x.data() as TFavoritePlace)
+    const places = placesDocs.docs.map(x => x.data() as TFavoritePlace)
 
     dispatch(setFavoritesPlaces(places))
 

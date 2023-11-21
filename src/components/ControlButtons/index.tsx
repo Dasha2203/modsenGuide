@@ -22,14 +22,14 @@ const ControlButtons = () => {
         <LocationIcon />
       </IconButton>}
       {map.getZoom() && (
-          <CombineButtons>
-            <IconButton onClick={() => dispatch(setZoom(zoom + 1))}>
-              <PlusIcon />
-            </IconButton>
-            <IconButton onClick={() => dispatch(setZoom(zoom - 1))}>
-              <MinusIcon />
-            </IconButton>
-          </CombineButtons>
+        <CombineButtons>
+          <IconButton onClick={() => dispatch(setZoom(zoom + 1))}>
+            <PlusIcon />
+          </IconButton>
+          <IconButton onClick={() => dispatch(setZoom(zoom - 1))}>
+            <MinusIcon />
+          </IconButton>
+        </CombineButtons>
       )}
     </WrapButtons>
   )

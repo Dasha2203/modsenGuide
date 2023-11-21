@@ -1,12 +1,10 @@
 import { placesTypes } from 'consts'
 
 import { Wrap } from './style'
+import { TTypeListProps } from './types'
 
-type Props = {
-  types: string[]
-}
+const TypesList = ({ types }: TTypeListProps) => {
 
-const TypesList = ({ types }: Props) => {
   return (
     <Wrap>
       {types.map(item => (

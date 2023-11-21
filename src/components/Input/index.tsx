@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { OutlinedTextFieldProps, TextFieldProps } from '@mui/material'
+import { TextFieldProps } from '@mui/material'
 
 import { StyledInput } from './style'
 

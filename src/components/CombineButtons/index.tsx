@@ -1,11 +1,8 @@
 
 import { Wrap } from './style'
+import { TCombineButtonProps } from './types'
 
-type Props = {
-  children: React.ReactNode | React.ReactNode[]
-}
-
-const CombineButtons = ({ children }: Props) => {
+const CombineButtons = ({ children }: TCombineButtonProps) => {
   return (
     <Wrap>
       {children}

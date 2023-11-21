@@ -1,16 +1,9 @@
-import React from 'react'
 import { ListItem } from '@mui/material'
 
 import { StyledList, StyledListButton } from './style'
+import { TListProps } from './types'
 
-type ListProps<A> = {
-  onChange: (value: A) => void
-  checked: A[]
-  itemAs: (option: A) => React.ReactNode
-  items: A[]
-}
-
-const List = <A extends unknown>({ items, itemAs, checked, onChange }: ListProps<A>) => {
+const List = <A extends unknown>({ items, itemAs, checked, onChange }: TListProps<A>) => {
 
   return (
     <StyledList dense>

@@ -1,32 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { placesTypes } from 'consts'
-import { DirectionsResult, TDetailPlaceResult, TMap, TPlacesResult } from 'types'
+import { TDetailPlaceResult } from 'types/detailPlace'
+import { DirectionsResult, TMap, TPlacesResult } from 'types/mapTypes'
 import { PlaceTypeItem } from 'types/placeTypeItem'
 
-interface IPlaceState {
-  places:  TPlacesResult[],
-  placeDetail: TDetailPlaceResult | null
-  typesPlaces: PlaceTypeItem[],
-  checkedTypesPlaces: PlaceTypeItem[],
-  map: google.maps.Map | null
-  zoom: number
-  isLoading: boolean
-  error: string
-  direction: DirectionsResult | null
-  radius: number
-}
+import { TPlaceState } from './types'
 
-const initialState: IPlaceState = {
-  places: [],
-  placeDetail: null,
-  typesPlaces: placesTypes,
+const initialState: TPlaceState = {
   checkedTypesPlaces: placesTypes,
   direction: null,
-  map: null,
-  zoom: 15,
-  isLoading: false,
   error: '',
+  isLoading: false,
+  map: null,
+  placeDetail: null,
+  places: [],
   radius: 10000,
+  typesPlaces: placesTypes,
+  zoom: 15,
 }
 
 const placesSlice = createSlice({

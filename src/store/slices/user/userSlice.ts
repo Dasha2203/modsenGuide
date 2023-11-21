@@ -1,23 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IUser } from 'models/IUser'
-import { TFavoritePlace } from 'types'
+import { TFavoritePlace } from 'types/favoritePlace'
 
-interface UserState {
-  user: IUser,
-  isLoading: boolean
-  error: string
-  userLocation: {lat: number, lng: number} | null
-  favoritePlaces: TFavoritePlace[]
-}
+import { TUserState } from './types'
 
-const initialState: UserState = {
+const initialState: TUserState = {
+  error: '',
+  favoritePlaces: [],
+  isLoading: false,
   user: {
     email: null,
     id: null
   },
-  favoritePlaces: [],
-  isLoading: false,
-  error: '',
   userLocation: null
 }
 

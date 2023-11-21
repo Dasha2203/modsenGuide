@@ -1,11 +1,7 @@
-import { LinkProps } from 'react-router-dom'
-import { LinkProps as MuiLinkProps } from '@mui/material'
-
 import { StyledLink } from './style'
+import { TSectionLinkProps } from './types'
 
-type Props = LinkProps & MuiLinkProps & {}
-
-const SectionLink = (props: Props) => {
+const SectionLink = (props: TSectionLinkProps) => {
   return (
     <StyledLink {...props}/>
   )

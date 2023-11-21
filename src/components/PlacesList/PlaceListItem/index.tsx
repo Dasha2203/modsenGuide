@@ -1,20 +1,11 @@
 import { Grid } from '@mui/material'
 
 import { ItemImg, ItemText,Row } from './style'
+import { TPlaceListItemProps } from './types'
 
-type TItem = {
-  id: string | number
-  src: string
-  text: string
-}
-
-type ItemProps = {
-  item: TItem
-  isActive: boolean
-}
-
-const PlaceListItem = ({ item, isActive }: ItemProps) => {
+const PlaceListItem = ({ item, isActive }: TPlaceListItemProps) => {
   const { id, src, text } = item
+  
   return (
     <Row container key={id} active={isActive}>
       <ItemImg item>

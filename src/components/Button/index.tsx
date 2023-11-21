@@ -1,14 +1,7 @@
-import { ButtonProps } from '@mui/material'
-
 import { StyledButton } from './style'
+import { TButtonProps } from './types'
 
-type Props = ButtonProps & {
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  onClick: () => void
-}
-
-const Button = ({ children, ...props }: Props) => {
+const Button = ({ children, ...props }: TButtonProps) => {
   return (
     <StyledButton
       {...props}
