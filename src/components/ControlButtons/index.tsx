@@ -6,7 +6,7 @@ import { setZoom } from 'store/slices/places/placesSlice'
 import CombineButtons from 'ui/CombineButtons'
 import IconButton from 'ui/IconButton'
 
-import { WrapButtons } from './style'
+import { WrapButtons } from './styles'
 
 const ControlButtons = () => {
   const { map, zoom } = useAppSelector(state => state.placesReducer)

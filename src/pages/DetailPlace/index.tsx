@@ -18,7 +18,7 @@ import SectionLink from 'ui/SectionLink'
 
 import TypesList from 'components/TypesList'
 
-import { Card, CardActions, CardContent, TextCard, TitleCard, Wrap } from './style'
+import { Card, CardActions, CardContent, TextCard, TitleCard, Wrap } from './styles'
 
 const DetailPlace = () => {
   const [isFavorite, setIsFavorite] = useState(false)

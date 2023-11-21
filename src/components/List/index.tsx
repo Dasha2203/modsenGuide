@@ -1,6 +1,6 @@
 import { ListItem } from '@mui/material'
 
-import { StyledList, StyledListButton } from './style'
+import { StyledList, StyledListButton } from './styles'
 import { TListProps } from './types'
 
 const List = <A extends unknown>({ items, itemAs, checked, onChange }: TListProps<A>) => {

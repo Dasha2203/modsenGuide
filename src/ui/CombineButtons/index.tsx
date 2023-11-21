@@ -1,5 +1,5 @@
 
-import { Wrap } from './style'
+import { Wrap } from './styles'
 import { TCombineButtonProps } from './types'
 
 const CombineButtons = ({ children }: TCombineButtonProps) => {

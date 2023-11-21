@@ -3,7 +3,7 @@ import { useAppSelector } from 'hooks/redux-hooks'
 
 import Navbar from './Navbar'
 import SearchBar from './SearchBar'
-import { StyledDrawer } from './style'
+import { StyledDrawer } from './styles'
 import { TDrawerProps } from './types'
 
 export const Drawer = ({ isLoaded }: TDrawerProps) => {

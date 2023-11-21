@@ -12,7 +12,7 @@ import { logout } from 'store/slices/user/actionCreators'
 import IconButton from 'ui/IconButton'
 import Link from 'ui/Link'
 
-import { AvatarButton, ButtonGroup, Logo, WrapNavbar } from './style'
+import { AvatarButton, ButtonGroup, Logo, WrapNavbar } from './styles'
 
 const Navbar = () => {
   const { isAuth } = useAuth()

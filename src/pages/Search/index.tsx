@@ -5,13 +5,13 @@ import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { fetchPlaces } from 'store/slices/places/actionCreators'
 import { setRadius } from 'store/slices/places/placesSlice'
 import Input from 'ui/Input'
-import { InputContainer, InputUnit } from 'ui/Input/style'
+import { InputContainer, InputUnit } from 'ui/Input/styles'
 import Label from 'ui/Label'
 
-import { SearchIcon } from 'components/Drawer/SearchBar/style'
+import { SearchIcon } from 'components/Drawer/SearchBar/styles'
 import PlacesList from 'components/PlacesList'
 
-import { Wrap } from './style'
+import { Wrap } from './styles'
 
 const Search = () => {
   const dispatch = useAppDispatch()

@@ -1,4 +1,4 @@
-import { Label, Property, Row, StyledBox, Value } from './style'
+import { Label, Property, Row, StyledBox, Value } from './styles'
 import { TInfoPanelProps } from './types'
 
 const InfoPanel = ({ items }: TInfoPanelProps) => {

@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 import { TextFieldProps } from '@mui/material'
 
-import { StyledInput } from './style'
+import { StyledInput } from './styles'
 
 const Input = forwardRef<HTMLInputElement, TextFieldProps>(({
   label,

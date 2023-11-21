@@ -1,6 +1,6 @@
 import { placesTypes } from 'consts'
 
-import { Wrap } from './style'
+import { Wrap } from './styles'
 import { TTypeListProps } from './types'
 
 const TypesList = ({ types }: TTypeListProps) => {

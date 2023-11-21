@@ -10,7 +10,7 @@ import Map from 'components/Map'
 
 import { auth } from '../../firebase'
 
-import { StyledBox } from './style'
+import { StyledBox } from './styles'
 
 export const Layout = () => {
   const dispatch = useAppDispatch()

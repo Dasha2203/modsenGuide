@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import { WrapSearchBar } from './style'
+import { WrapSearchBar } from './styles'
 
 const SearchBar = () => {
 

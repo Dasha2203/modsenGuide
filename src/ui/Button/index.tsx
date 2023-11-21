@@ -1,4 +1,4 @@
-import { StyledButton } from './style'
+import { StyledButton } from './styles'
 import { TButtonProps } from './types'
 
 const Button = ({ children, ...props }: TButtonProps) => {

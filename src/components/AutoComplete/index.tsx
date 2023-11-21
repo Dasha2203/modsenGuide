@@ -4,7 +4,7 @@ import { Avatar, InputAdornment, TextField } from '@mui/material'
 import { PlacesTypesEnum } from 'consts';
 import usePlacesAutocomplete from 'use-places-autocomplete';
 
-import { AutoCompleteInput, StyledAutoComplete } from './style'
+import { AutoCompleteInput, StyledAutoComplete } from './styles'
 
 const AutoComplete = ({ radius, types }: { radius: number, types: PlacesTypesEnum[] }) => {
   const {

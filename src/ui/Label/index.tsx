@@ -1,4 +1,4 @@
-import { StyledLabel } from './style'
+import { StyledLabel } from './styles'
 
 const Label = ({ children }: { children: React.ReactNode }) => {
   return (

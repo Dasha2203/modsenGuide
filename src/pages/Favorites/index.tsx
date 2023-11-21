@@ -6,7 +6,7 @@ import Link from 'ui/Link'
 
 import SmallCard from 'components/SmallCard'
 
-import { Wrap } from './style'
+import { Wrap } from './styles'
 
 const Favorites = () => {
   const { favoritePlaces } = useAppSelector(state => state.userReducer)

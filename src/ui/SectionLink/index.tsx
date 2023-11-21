@@ -1,4 +1,4 @@
-import { StyledLink } from './style'
+import { StyledLink } from './styles'
 import { TSectionLinkProps } from './types'
 
 const SectionLink = (props: TSectionLinkProps) => {
