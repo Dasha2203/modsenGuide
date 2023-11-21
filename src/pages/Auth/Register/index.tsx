@@ -8,10 +8,9 @@ import { addDoc,collection } from 'firebase/firestore'
 import { useAppDispatch } from 'hooks/redux-hooks'
 import { setUser } from 'store/slices/user/userSlice'
 import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles';
+import Input from 'ui/Input'
+import Link from 'ui/Link';
 import { Page } from 'ui/Page'
-
-import Input from 'components/Input'
-import Link from 'components/Link';
 
 import { db } from './../../../firebase'
 

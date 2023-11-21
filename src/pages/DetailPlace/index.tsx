@@ -13,9 +13,9 @@ import { fetchDirection, fetchPlace } from 'store/slices/places/actionCreators'
 import { fetchDetailPageSuccess, setDirection } from 'store/slices/places/placesSlice'
 import { addFavoritesPlace, removeFavoritesPlaces } from 'store/slices/user/actionCreators'
 import { TFavoritePlace } from 'types/favoritePlace'
+import Button from 'ui/Button'
+import SectionLink from 'ui/SectionLink'
 
-import Button from 'components/Button'
-import SectionLink from 'components/SectionLink'
 import TypesList from 'components/TypesList'
 
 import { Card, CardActions, CardContent, TextCard, TitleCard, Wrap } from './style'

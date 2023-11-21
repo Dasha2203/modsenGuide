@@ -1,6 +1,5 @@
 import { styled } from '@mui/material'
-
-import Link from 'components/Link'
+import Link from 'ui/Link'
 
 export const StyledLink = styled(Link)(({ theme }) => ({
   display: 'inline-grid',

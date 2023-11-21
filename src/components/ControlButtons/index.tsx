@@ -3,9 +3,8 @@ import LocationIcon from 'icons/LocationIcon'
 import MinusIcon from 'icons/MinusIcon'
 import PlusIcon from 'icons/PlusIcon'
 import { setZoom } from 'store/slices/places/placesSlice'
-
-import CombineButtons from 'components/CombineButtons'
-import IconButton from 'components/IconButton'
+import CombineButtons from 'ui/CombineButtons'
+import IconButton from 'ui/IconButton'
 
 import { WrapButtons } from './style'
 

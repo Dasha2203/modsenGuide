@@ -2,8 +2,8 @@ import { RoutesEnum } from 'consts'
 import { useAppSelector } from 'hooks/redux-hooks'
 import FavoriteIcon from 'icons/FavoriteIcon'
 import RightArrowIcon from 'icons/RightArrowIcon'
+import Link from 'ui/Link'
 
-import Link from 'components/Link'
 import SmallCard from 'components/SmallCard'
 
 import { Wrap } from './style'

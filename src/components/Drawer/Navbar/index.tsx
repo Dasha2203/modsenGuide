@@ -9,9 +9,8 @@ import LoginIcon from 'icons/LoginIcon'
 import SearchIcon from 'icons/SearchIcon'
 import { setOpenSearchBar } from 'store/slices/app/appSlice'
 import { logout } from 'store/slices/user/actionCreators'
-
-import IconButton from 'components/IconButton'
-import Link from 'components/Link'
+import IconButton from 'ui/IconButton'
+import Link from 'ui/Link'
 
 import { AvatarButton, ButtonGroup, Logo, WrapNavbar } from './style'
 
