@@ -1,8 +1,8 @@
-import { PlacesTypes } from "models/IPlace"
+import { PlacesTypesEnum } from "consts"
 
 export type PlaceTypeItem = {
   id: string
   src: string
   text: string
-  type: PlacesTypes
+  type: PlacesTypesEnum
 }

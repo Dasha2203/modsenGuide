@@ -8,7 +8,7 @@ type ComponentProps = {
 }
 
 export const StyledIconButton = styled(IconButton, {
-  shouldForwardProp: (prop) => prop !== "lowerCase" && prop !== "active" && prop !== "color"
+  shouldForwardProp: (prop) => prop !== "lowerCase" && prop !== "active" && prop !== "color" && prop !== "typeColor"
 })<ComponentProps>(({ theme, active, color, typeColor = 'main' }) => ({
   padding: '17px',
   borderRadius: '6px',
