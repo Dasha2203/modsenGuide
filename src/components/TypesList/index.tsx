@@ -1,4 +1,4 @@
-import { placesTypes } from 'const'
+import { placesTypes } from 'consts'
 
 import { Wrap } from './style'
 

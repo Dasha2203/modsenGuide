@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { placesTypes } from 'const'
+import { placesTypes } from 'consts'
 import { DirectionsResult, TDetailPlaceResult, TMap, TPlacesResult } from 'types'
 import { PlaceTypeItem } from 'types/placeTypeItem'
 

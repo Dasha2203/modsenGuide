@@ -1,16 +1,4 @@
-
-export enum PlacesTypes {
-  Restaurant = 'restaurant',
-  Food = 'food',
-  Establishment = 'establishment',
-  MealTakeAway = 'meal_takeaway',
-  PointOfInterest = 'point_of_interest',
-  Cafe = 'cafe',
-  Sport = 'gym',
-  Bank = 'bank',
-  Store = 'supermarket',
-  Park = 'park',
-}
+import { PlacesTypesEnum } from 'consts'
 
 export interface IPlace {
   name: string
@@ -20,6 +8,6 @@ export interface IPlace {
       lng : number
     },
   },
-  types: PlacesTypes[]
+  types: PlacesTypesEnum[]
   vicinity: string
 }

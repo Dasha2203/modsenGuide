@@ -1,7 +1,8 @@
 import { Controller,SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { Box, Button, Typography } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import Container from '@mui/material/Container'
+import { RegexEmail, RegexPassword, RoutesEnum } from 'consts'
 import { createUserWithEmailAndPassword,getAuth } from 'firebase/auth'
 import { addDoc,collection } from 'firebase/firestore'
 import { useAppDispatch } from 'hooks/redux-hooks'
@@ -54,15 +55,16 @@ export const Register = () => {
       const auth = getAuth()
 
       const { user } = await createUserWithEmailAndPassword(auth, email, password)
+      const { uid, refreshToken: token} = user
       await createUserInfo(user.uid, name)
 
       dispatch(setUser({
-        email: user.email,
-        id: user.uid,
-        token: user.refreshToken
+        email,
+        id: uid,
+        token
       }))
 
-      navigate('/')
+      navigate(RoutesEnum.main)
     } catch (err) {
       console.log(err)
     }
@@ -99,8 +101,8 @@ export const Register = () => {
               rules={{
                 required: 'Почта обязательна для заполнения',
                 pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: "invalid email address dashka"
+                  value: RegexEmail,
+                  message: "invalid email address"
                 }
               }}
               control={control}
@@ -125,7 +127,7 @@ export const Register = () => {
               rules={{
                 required: 'Пароль обязателен для заполнения',
                 pattern: {
-                  value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
+                  value: RegexPassword,
                   message: 'Пароль должен состоять из 6 символов, включая спецсимвол, минимум 1 заглавную букву'
                 }
               }}
@@ -159,7 +161,7 @@ export const Register = () => {
             <Typography>
               Вы уже зарегистрированы?
             </Typography>
-            <Link to={"/login"}>Войти</Link>
+            <Link to={RoutesEnum.login}>Войти</Link>
           </FormLink>
         </FormContainer>
       </Container>

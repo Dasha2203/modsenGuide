@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { Button, Container, Typography } from '@mui/material'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { RegexEmail, RegexPassword, RoutesEnum } from 'consts'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"
 import { useAppDispatch } from 'hooks/redux-hooks'
 import { setUser } from "store/slices/user/userSlice"
-import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles';
+import { FormContainer, FormLink, FormTitle } from 'ui/Form/styles'
 import { Page } from 'ui/Page';
 
 import Input from 'components/Input'
@@ -46,7 +47,7 @@ export const Login = () => {
       const token = await user.getIdToken()
       localStorage.setItem('token', token)
 
-      navigate('/')
+      navigate(RoutesEnum.main)
     } catch (err) {
       console.log(err)
       setError('Что-то пошло не так')
@@ -61,14 +62,14 @@ export const Login = () => {
             Вход
           </FormTitle>
           {error && <Typography color={"secondary"}>{error}</Typography>}
-          <form onSubmit={(handleSubmit(submit))}>
+          <form onSubmit={handleSubmit(submit)}>
             <Controller
               name="email"
               control={control}
               rules={{
                 required: 'Почта обязательна для заполнения',
                 pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  value: RegexEmail,
                   message: "Неверный формат почты"
                 }
               }}
@@ -92,7 +93,7 @@ export const Login = () => {
               rules={{
                 required: 'Пароль обязателен для заполнения',
                 pattern: {
-                  value: /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g,
+                  value: RegexPassword,
                   message: 'Пароль должен состоять из 6 символов, включая спецсимвол, минимум 1 заглавную букву'
                 }
               }}
@@ -127,7 +128,7 @@ export const Login = () => {
             <Typography>
               Вы не зарегистрированы?
             </Typography>
-            <Link to={"/register"}>Регистрация</Link>
+            <Link to={RoutesEnum.register}>Регистрация</Link>
           </FormLink>
         </FormContainer>
       </Container>

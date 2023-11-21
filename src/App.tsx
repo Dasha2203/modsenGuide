@@ -1,5 +1,6 @@
-import { Route,Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { ThemeProvider } from '@emotion/react'
+import { RoutesEnum } from 'consts'
 import DetailPlace from 'pages/DetailPlace'
 import Favorites from 'pages/Favorites'
 import Search from 'pages/Search'
@@ -16,14 +17,14 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Search />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/place/:id" element={<DetailPlace />} />
+        <Route path={RoutesEnum.main} element={<Layout />}>
+          <Route path={RoutesEnum.main} element={<Search />} />
+          <Route path={RoutesEnum.favorites} element={<Favorites />} />
+          <Route path={RoutesEnum.detailPlace} element={<DetailPlace />} />
         </Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path='*' element={<NotFound />} />
+        <Route path={RoutesEnum.login} element={<Login />} />
+        <Route path={RoutesEnum.register} element={<Register />} />
+        <Route path={RoutesEnum.notFound} element={<NotFound />} />
       </Routes>
     </ThemeProvider>
   );

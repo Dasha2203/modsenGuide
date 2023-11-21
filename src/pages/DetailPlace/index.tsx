@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { CardMedia } from '@mui/material'
+import { RoutesEnum } from 'consts'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import useAuth from 'hooks/use-auth'
 import { useDeviceType } from 'hooks/useDeviceType'
@@ -65,7 +66,7 @@ const DetailPlace = () => {
   }, [placeDetail, favoritePlaces])
 
   function handleClick() {
-    if (!isAuth) navigate('/login')
+    if (!isAuth) navigate(RoutesEnum.login)
     if (!id || !placeDetail || !user.id) return
 
     if (isFavorite) {
@@ -105,8 +106,8 @@ const DetailPlace = () => {
 
   return (
     <Wrap>
-      {location.state?.prev === '/favorites' && (
-        <SectionLink to="/favorites" sx={{ mb: '15px' }}>
+      {location.state?.prev === RoutesEnum.favorites && (
+        <SectionLink to={RoutesEnum.favorites} sx={{ mb: '15px' }}>
           <LeftArrowIcon />
           Избранное
         </SectionLink>

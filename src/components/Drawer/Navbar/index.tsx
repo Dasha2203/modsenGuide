@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Avatar, Menu, MenuItem } from '@mui/material'
+import { RoutesEnum } from 'consts'
 import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks'
 import useAuth from 'hooks/use-auth'
 import FavoriteIcon from 'icons/FavoriteIcon'
@@ -54,8 +55,8 @@ const Navbar = () => {
         </IconButton>
         {isAuth && (
           <IconButton
-            onClick={() => navigate('/favorites')}
-            active={pathname === '/favorites'}
+            onClick={() => navigate(RoutesEnum.favorites)}
+            active={pathname === RoutesEnum.favorites}
             color="secondary"
           >
             <FavoriteIcon />
