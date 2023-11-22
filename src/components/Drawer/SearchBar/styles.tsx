@@ -2,10 +2,8 @@ import { StyledList } from '@components/List/styles'
 import styled from "@emotion/styled/macro"
 import Search from '@icons/SearchIcon'
 import { Box } from '@mui/material'
-import { StyledInput } from '@ui/Input/styles'
 
 export const WrapSearchBar = styled(Box)`
-
   padding: 25px 25px 0;
   display: flex;
   flex-direction: column;
@@ -14,11 +12,6 @@ export const WrapSearchBar = styled(Box)`
   border-left-width: 3px;
   border-left-color: #C4C4C4;
   border-left-style: solid;
-
-  ${StyledInput} {
-    margin-top: 0;
-    margin-bottom: 30px;
-  }
 
   ${StyledList} {
     margin-bottom: 30px;

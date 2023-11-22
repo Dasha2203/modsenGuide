@@ -5,7 +5,7 @@ import { Wrap } from './styles'
 import { TTypeListProps } from './types'
 
 const TypesList = ({ types }: TTypeListProps) => {
-
+  
   const list = useMemo(() => (
     types.map(item => (
       placesTypes.find(placeType => placeType.type === item) ?

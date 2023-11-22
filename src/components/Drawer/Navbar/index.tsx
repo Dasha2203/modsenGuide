@@ -47,7 +47,7 @@ const Navbar = () => {
       <ButtonGroup>
         <IconButton
           onClick={handleSearch}
-          active={pathname === '/'}
+          active={pathname === RoutesEnum.main}
           color="primary"
         >
           <SearchIcon />

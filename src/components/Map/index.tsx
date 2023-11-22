@@ -1,12 +1,11 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import locationImg from '@assets/icons/location.svg'
 import ControlButtons from '@components/ControlButtons'
 import InfoPanel from '@components/InfoPanel'
-import { placesTypes } from '@consts'
+import PlaceMarker from '@components/PlaceMarker'
 import { useAppDispatch, useAppSelector } from '@hooks/redux-hooks'
 import { Circle, DirectionsRenderer, GoogleMap, Marker } from '@react-google-maps/api'
-import { setOpenSearchBar } from '@store/slices/app/appSlice'
 import { setMap } from '@store/slices/places/placesSlice'
 import { setUserLocation } from '@store/slices/user/userSlice'
 
@@ -32,6 +31,8 @@ const Map = ({ isLoaded }: TMapProps) => {
     dispatch(setMap(null))
   }, [])
 
+  const placesMarks = useMemo(() => places.filter(place => !!place.geometry?.location), [places])
+
   function getPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -50,7 +51,6 @@ const Map = ({ isLoaded }: TMapProps) => {
     }
   }
   function handleMarkerClick(id: string) {
-    dispatch(setOpenSearchBar(true))
     navigate(`/place/${id}`)
   }
 
@@ -92,13 +92,14 @@ const Map = ({ isLoaded }: TMapProps) => {
               }}
             />
           )}
-          {places.filter(place => !!place.geometry?.location).map(({ place_id, geometry, types }) => {
+          {placesMarks.map(({ place_id, geometry, types }) => {
+            
             return (
-              <Marker
-                key={place_id}
-                position={geometry?.location!}
-                icon={{ url: placesTypes.find(({ type }) => types?.find(item => item === type))?.src!, scaledSize: new google.maps.Size(30, 30) }}
-                onClick={() => handleMarkerClick(place_id!)}
+              <PlaceMarker
+                placeId={place_id}
+                position={geometry!.location!}
+                handleClick={handleMarkerClick}
+                types={types}
               />
             )
 

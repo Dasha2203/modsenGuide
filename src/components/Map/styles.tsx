@@ -11,7 +11,12 @@ export const MapContainer = styled(Box, { shouldForwardProp: (prop) => prop !== 
       width: 'calc(100% - 600px)'
     }),
     ...(!open && {
-      width: 'calc(100% - 70px)'
+      width: 'calc(100% - 110px)'
     }),
+    [theme.breakpoints.down('md')]: {
+      ...(!open && {
+        width: 'calc(100% - 70px)'
+      }),
+    },
   }),
 );

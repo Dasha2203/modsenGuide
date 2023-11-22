@@ -1,14 +1,21 @@
+import { useEffect } from 'react'
 import SmallCard from '@components/SmallCard'
 import { RoutesEnum } from '@consts'
-import { useAppSelector } from '@hooks/redux-hooks'
+import { useAppDispatch, useAppSelector } from '@hooks/redux-hooks'
 import FavoriteIcon from '@icons/FavoriteIcon'
 import RightArrowIcon from '@icons/RightArrowIcon'
+import { setOpenSearchBar } from '@store/slices/app/appSlice'
 import Link from '@ui/Link'
 
 import { Wrap } from './styles'
 
 const Favorites = () => {
+  const dispatch = useAppDispatch()
   const { favoritePlaces } = useAppSelector(state => state.userReducer)
+
+  useEffect(() => {
+    dispatch(setOpenSearchBar(true))
+  }, [])
 
   return (
     <Wrap>

@@ -31,7 +31,7 @@ const DetailPlace = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    dispatch(setOpenSearchBar(false))
+    dispatch(setOpenSearchBar(true))
 
     return () => {
       dispatch(setDirection(null))
@@ -77,7 +77,7 @@ const DetailPlace = () => {
         name,
         placeId,
         types,
-        url,
+        url: url || '',
         lat: geometry?.location?.lat(),
         lng: geometry?.location?.lng(),
         photo: photos?.[0].getUrl(),

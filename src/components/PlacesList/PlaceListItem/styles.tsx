@@ -19,7 +19,6 @@ export const Row = styled(Grid,
 
 }))
 
-
 export const ItemText = styled(Typography)(({ theme }) => ({
   fontSize: '14px',
   fontWeight: 700,
