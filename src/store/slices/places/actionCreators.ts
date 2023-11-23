@@ -29,12 +29,11 @@ export const fetchPlaces = ({
       const request = {
         location,
         radius,
-        query,
         type: types[i],
       }
 
       let job: Promise<google.maps.places.PlaceResult[]> = new Promise(function (resolve, reject) {
-        service.textSearch(request, (results: TPlacesResult[] | null, status) => {
+        service.nearbySearch(request, (results: TPlacesResult[] | null, status) => {
           resolve(results || [])
         });
       });
@@ -42,8 +41,12 @@ export const fetchPlaces = ({
       requests.push(job)
     }
     const allResults = await Promise.all(requests)
-    console.log('all results: ', allResults.flat())
-    dispatch(placesFetchingSuccess(allResults.flat()))
+
+    const filteredResult = allResults
+                            .flat()
+                            .filter(place => place.name?.toLowerCase().indexOf(query) !== -1 || place.vicinity?.toLowerCase().indexOf(query) !== -1 )
+    console.log('all results: ', filteredResult)
+    dispatch(placesFetchingSuccess(filteredResult))
 
   } catch (e) {
     dispatch(placesFetchingError('Ошибка загрузки places'))

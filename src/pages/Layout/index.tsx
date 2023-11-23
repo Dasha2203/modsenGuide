@@ -18,6 +18,7 @@ export const Layout = () => {
     id: 'c8ee2cd9c357dc67',
     googleMapsApiKey:  process.env.REACT_APP_GOOGLE_MAPS_API_KEY!,
     libraries: ["places"],
+    language: "ru"
   })
 
   useEffect(() => {
